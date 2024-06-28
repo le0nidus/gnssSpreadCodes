@@ -32,8 +32,10 @@ int main() {
         myFile << std::endl;
     }
     */
+
+    B1C B1C_spreadCode;
     for (i = 1; i < BEIDOU_B1C_NBR_SATS + 1; i++) {
-        primaryCodeData = weil_code_generator(BEIDOU_B1C_WEIL_N, BEIDOU_B1C_PRIMARY_CODE_LENGTH, dataPrimaryPhaseDiff[i - 1], dataPrimaryTruncPoint[i - 1]);
+        primaryCodeData = B1C_spreadCode.generatePrimaryData(i);
         for (j = 0; j < BEIDOU_B1C_PRIMARY_CODE_LENGTH; j++) {
             myFile << primaryCodeData[j];
         }
