@@ -8,11 +8,11 @@
 
 
 int main() {
-    std::ofstream myFile("primaryCodeData.txt");
+    std::ofstream myFile("secondaryCodePilot.txt");
     std::vector<int> secondaryCodePilot;
     std::vector<int> primaryCodePilot;
     std::vector<int> primaryCodeData;
-    int i, j;
+    int j;
 
     /*
     for (i = 1; i < BEIDOU_B1C_NBR_SATS + 1; i++) {
@@ -34,10 +34,10 @@ int main() {
     */
 
     B1C B1C_spreadCode;
-    for (i = 1; i < BEIDOU_B1C_NBR_SATS + 1; i++) {
-        primaryCodeData = B1C_spreadCode.generatePrimaryData(i);
-        for (j = 0; j < BEIDOU_B1C_PRIMARY_CODE_LENGTH; j++) {
-            myFile << primaryCodeData[j];
+    for (int prn = 1; prn < BEIDOU_B1C_NBR_SATS + 1; prn++) {
+        secondaryCodePilot = B1C_spreadCode.generateSecondaryPilot(prn);
+        for (j = 0; j < BEIDOU_B1C_SECONDARY_CODE_LENGTH; j++) {
+            myFile << secondaryCodePilot[j];
         }
         myFile << std::endl;
     }
