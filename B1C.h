@@ -8,7 +8,6 @@
 
 class B1C {
 public:
-    std::vector<int> weil_code_generator(int N, int N0, int w, int p);
     std::vector<int> generatePrimaryData(int prn);
     std::vector<int> generatePrimaryPilot(int prn);
     std::vector<int> generateSecondaryPilot(int prn);
