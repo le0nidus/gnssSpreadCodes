@@ -8,6 +8,13 @@
 
 class B1C {
 public:
+    B1C() {     // Constructor
+        residuePrimary = residueCalculator(BEIDOU_B1C_WEIL_N);
+        legendrePrimary = generateLegendreSequence(BEIDOU_B1C_WEIL_N, residuePrimary);
+        residueSecondary = residueCalculator(BEIDOU_B1C_WEIL_N_SECONDARY);
+        legendreSecondary = generateLegendreSequence(BEIDOU_B1C_WEIL_N_SECONDARY, residueSecondary);
+    }
+
     std::vector<int> generatePrimaryData(int prn);
     std::vector<int> generatePrimaryPilot(int prn);
     std::vector<int> generateSecondaryPilot(int prn);
@@ -16,6 +23,11 @@ private:
     std::vector<int> residueCalculator(int N);
     std::vector<int> generateLegendreSequence(int N, std::vector<int> residue);
     std::vector<int> generateWeilCode(int N, int w, std::vector<int> legendre);
+
+    std::vector<int> residuePrimary;
+    std::vector<int> residueSecondary;
+    std::vector<int> legendrePrimary;
+    std::vector<int> legendreSecondary;
 
     //!====================================PRIMARY CODE PARAMETERS OF B1C DATA COMPONENTS=============================================
     //!Phase difference(w) table data for Data Component
@@ -117,6 +129,8 @@ private:
         1823,   75,   11,   63, 1937,
         22  , 1768, 1526, 1402, 1445,
         1680, 1290, 1245 };
+
+    
 
 };
 

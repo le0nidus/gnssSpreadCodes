@@ -34,12 +34,8 @@ std::vector<int> B1C::generateWeilCode(int N, int w, std::vector<int> legendre) 
 
 
 std::vector<int> B1C::generatePrimaryData(int prn) {
-    std::vector<int> residue;
-    std::vector<int> legendre;
     std::vector<int> weil_code;
-    residue = residueCalculator(BEIDOU_B1C_WEIL_N);
-    legendre = generateLegendreSequence(BEIDOU_B1C_WEIL_N, residue);
-    weil_code = generateWeilCode(BEIDOU_B1C_WEIL_N, dataPrimaryPhaseDiff[prn - 1], legendre);
+    weil_code = generateWeilCode(BEIDOU_B1C_WEIL_N, dataPrimaryPhaseDiff[prn - 1], legendrePrimary);
 
     std::vector<int> weil_out;
     if ((BEIDOU_B1C_PRIMARY_CODE_LENGTH + dataPrimaryTruncPoint[prn - 1] - 2) < BEIDOU_B1C_WEIL_N)
@@ -52,12 +48,8 @@ std::vector<int> B1C::generatePrimaryData(int prn) {
 }
 
 std::vector<int> B1C::generatePrimaryPilot(int prn) {
-    std::vector<int> residue;
-    std::vector<int> legendre;
     std::vector<int> weil_code;
-    residue = residueCalculator(BEIDOU_B1C_WEIL_N);
-    legendre = generateLegendreSequence(BEIDOU_B1C_WEIL_N, residue);
-    weil_code = generateWeilCode(BEIDOU_B1C_WEIL_N, pilotPrimaryPhaseDiff[prn - 1], legendre);
+    weil_code = generateWeilCode(BEIDOU_B1C_WEIL_N, pilotPrimaryPhaseDiff[prn - 1], legendrePrimary);
 
     std::vector<int> weil_out;
     if ((BEIDOU_B1C_PRIMARY_CODE_LENGTH + pilotPrimaryTruncPoint[prn - 1] - 2) < BEIDOU_B1C_WEIL_N)
@@ -70,12 +62,8 @@ std::vector<int> B1C::generatePrimaryPilot(int prn) {
 }
 
 std::vector<int> B1C::generateSecondaryPilot(int prn) {
-    std::vector<int> residue;
-    std::vector<int> legendre;
     std::vector<int> weil_code;
-    residue = residueCalculator(BEIDOU_B1C_WEIL_N_SECONDARY);
-    legendre = generateLegendreSequence(BEIDOU_B1C_WEIL_N_SECONDARY, residue);
-    weil_code = generateWeilCode(BEIDOU_B1C_WEIL_N_SECONDARY, pilotSecondaryPhaseDiff[prn - 1], legendre);
+    weil_code = generateWeilCode(BEIDOU_B1C_WEIL_N_SECONDARY, pilotSecondaryPhaseDiff[prn - 1], legendreSecondary);
 
     std::vector<int> weil_out;
     if ((BEIDOU_B1C_SECONDARY_CODE_LENGTH + pilotSecondaryTruncPoint[prn - 1] - 2) < BEIDOU_B1C_WEIL_N_SECONDARY)
