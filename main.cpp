@@ -33,24 +33,20 @@ int main() {
 	std::vector<int> result(13);
 	GPS_L5 gpsl5;
 
-	myfile << "L5Q CODE\n";
+	std::cout << "L5Q CODE\n";
 	for (i = 1; i < 64; i++) {
 		vec = gpsl5.generateL5Q(i);
-		myfile << "PRN: " << i << std::endl;
-		for (j = 0; j < GPS_L5_CODE_LENGTH; j++) {
-			myfile << vec[j];
-		}
-		myfile << std::endl;
+		std::cout << "PRN: " << i << std::endl;
+		gpsl5.print(vec, GPS_L5_CODE_LENGTH);
+		std::cout << std::endl;
 	}
 
-	myfile << "L5I CODE\n";
+	std::cout << "L5I CODE\n";
 	for (i = 1; i < 64; i++) {
 		vec = gpsl5.generateL5I(i);
-		myfile << "PRN: " << i << std::endl;
-		for (j = 0; j < GPS_L5_CODE_LENGTH; j++) {
-			myfile << vec[j];
-		}
-		myfile << std::endl;
+		std::cout << "PRN: " << i << std::endl;
+		gpsl5.print(vec, GPS_L5_CODE_LENGTH);
+		std::cout << std::endl;
 	}
 	myfile.close();
 
