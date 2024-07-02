@@ -72,3 +72,26 @@ std::vector<int> B1C::generateSecondaryPilot(int prn) {
     return weil_out;
 }
 
+void B1C::print(std::vector<int> spreadCode) {
+    int vecSize = (int)spreadCode.size();
+    if (vecSize != BEIDOU_B1C_PRIMARY_CODE_LENGTH && vecSize != BEIDOU_B1C_SECONDARY_CODE_LENGTH) {
+        std::cout << "Error printing vector. Invalid BeiDou B1C spread code";
+        return;
+    }
+    for (int j = 0; j < vecSize; j++)
+        std::cout << spreadCode[j];
+    std::cout << std::endl;
+    return;
+}
+
+void B1C::print(std::vector<int> spreadCode, std::string sep) {
+    int vecSize = (int)spreadCode.size();
+    if (vecSize != BEIDOU_B1C_PRIMARY_CODE_LENGTH && vecSize != BEIDOU_B1C_SECONDARY_CODE_LENGTH) {
+        std::cout << "Error printing vector. Invalid BeiDou B1C spread code";
+        return;
+    }
+    for (int j = 0; j < vecSize; j++)
+        std::cout << spreadCode[j] << sep;
+    std::cout << std::endl;
+    return;
+}

@@ -24,6 +24,9 @@ public:
     std::vector<int> generatePrimaryPilot(int prn);
     std::vector<int> generateSecondaryPilot(int prn);
 
+    void print(std::vector<int> spreadCode);
+    void print(std::vector<int> spreadCode, std::string sep);
+
 private:
     std::vector<int> residueCalculator(int N);
     std::vector<int> generateLegendreSequence(int N, std::vector<int> residue);
