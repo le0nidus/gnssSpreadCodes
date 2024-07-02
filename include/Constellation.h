@@ -9,11 +9,12 @@
 
 class Constellation {
 public:
-    void printOneCode(std::vector<int> spreadCode, int size);
-    void printOneCode(std::vector<int> spreadCode, int size, std::string sep);
+    virtual void printOneCode(std::vector<int> spreadCode);
+    virtual void printOneCode(std::vector<int> spreadCode, std::string sep);
 
 private:
-    
+    virtual int getSpreadCodeSize() { return 1; }
+    virtual std::string getConstellationName() { return "Constellation"; }
 };
 
 #endif

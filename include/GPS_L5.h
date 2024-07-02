@@ -18,10 +18,11 @@ public:
 	std::vector<int> generateL5I(int prn);
 	std::vector<int> generateL5Q(int prn);
 
-	void printOneCode(std::vector<int> spreadCode);
-	void printOneCode(std::vector<int> spreadCode, std::string sep);
-
 private:
+
+	int getSpreadCodeSize() { return GPS_L5_CODE_LENGTH; }
+	std::string getConstellationName() { return "GPS L5"; }
+
 	std::vector<int> xa_shift(std::vector<int>& xa);
 	std::vector<int> xb_shift(std::vector<int>& xb);
 	std::vector<int> make_xa();

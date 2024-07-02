@@ -67,27 +67,3 @@ std::vector<int> GPS_L5::generateL5Q(int prn) {
 
 	return code;
 }
-
-void GPS_L5::printOneCode(std::vector<int> spreadCode) {
-	int vecSize = (int)spreadCode.size();
-	if (vecSize != GPS_L5_CODE_LENGTH) {
-		std::cout << "Error printing vector. Invalid GPS L5 spread code.";
-		return;
-	}
-	for (int j = 0; j < GPS_L5_CODE_LENGTH; j++)
-		std::cout << spreadCode[j];
-	std::cout << std::endl;
-	return;
-}
-
-void GPS_L5::printOneCode(std::vector<int> spreadCode, std::string sep) {
-	int vecSize = (int)spreadCode.size();
-	if (vecSize != GPS_L5_CODE_LENGTH) {
-		std::cout << "Error printing vector. Invalid GPS L5 spread code.";
-		return;
-	}
-	for (int j = 0; j < GPS_L5_CODE_LENGTH; j++)
-		std::cout << spreadCode[j] << sep;
-	std::cout << std::endl;
-	return;
-}
