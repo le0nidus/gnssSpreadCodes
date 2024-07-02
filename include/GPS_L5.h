@@ -18,8 +18,8 @@ public:
 	std::vector<int> generateL5I(int prn);
 	std::vector<int> generateL5Q(int prn);
 
-	void print(std::vector<int> spreadCode);
-	void print(std::vector<int> spreadCode, std::string sep);
+	void printOneCode(std::vector<int> spreadCode);
+	void printOneCode(std::vector<int> spreadCode, std::string sep);
 
 private:
 	std::vector<int> xa_shift(std::vector<int>& xa);

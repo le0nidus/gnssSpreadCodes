@@ -9,8 +9,8 @@
 
 class Constellation {
 public:
-    void print(std::vector<int> spreadCode, int size);
-    void print(std::vector<int> spreadCode, int size, std::string sep);
+    void printOneCode(std::vector<int> spreadCode, int size);
+    void printOneCode(std::vector<int> spreadCode, int size, std::string sep);
 
 private:
     

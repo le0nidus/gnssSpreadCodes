@@ -18,21 +18,21 @@ int main() {
 	for (prn = 1; prn < BEIDOU_B1C_NBR_SATS + 1; prn++) {
 		std::cout << "PRN: " << prn << std::endl;
 		vec = B1C_spreadCode.generateSecondaryPilot(prn);
-		B1C_spreadCode.print(vec);
+		B1C_spreadCode.printOneCode(vec);
 		std::cout << std::endl;
 	}
 	std::cout << "Primary Pilot Code\n";
 	for (prn = 1; prn < BEIDOU_B1C_NBR_SATS + 1; prn++) {
 		std::cout << "PRN: " << prn << std::endl;
 		vec = B1C_spreadCode.generatePrimaryPilot(prn);
-		B1C_spreadCode.print(vec);
+		B1C_spreadCode.printOneCode(vec);
 		std::cout << std::endl;
 	}
 	std::cout << "Primary Data Code\n";
 	for (prn = 1; prn < BEIDOU_B1C_NBR_SATS + 1; prn++) {
 		std::cout << "PRN: " << prn << std::endl;
 		vec = B1C_spreadCode.generatePrimaryData(prn);
-		B1C_spreadCode.print(vec);
+		B1C_spreadCode.printOneCode(vec);
 		std::cout << std::endl;
 	}
     
@@ -42,7 +42,7 @@ int main() {
 	for (prn = 1; prn < 64; prn++) {
 		vec = gpsl5.generateL5Q(prn);
 		std::cout << "PRN: " << prn << std::endl;
-		gpsl5.print(vec, ",");
+		gpsl5.printOneCode(vec, ",");
 		std::cout << std::endl;
 	}
 
@@ -50,7 +50,7 @@ int main() {
 	for (prn = 1; prn < 64; prn++) {
 		vec = gpsl5.generateL5I(prn);
 		std::cout << "PRN: " << prn << std::endl;
-		gpsl5.print(vec);
+		gpsl5.printOneCode(vec);
 		std::cout << std::endl;
 	}
 
