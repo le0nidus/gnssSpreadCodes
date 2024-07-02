@@ -1,6 +1,3 @@
-#include <algorithm>
-#include <vector>
-#include <iterator>
 #include <GPS_L5.h>
 
 

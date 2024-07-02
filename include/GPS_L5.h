@@ -1,11 +1,15 @@
 #include <unordered_map>
+#include <algorithm>
+#include <vector>
+#include <iterator>
+#include <Constellation.h>
 
 #define GPS_L5_CODE_LENGTH 10230
 #define GPS_L5_REGISTER_SIZE 13
 #define GPS_L5_XB_SIZE 8191
 
 
-class GPS_L5 {
+class GPS_L5 : public Constellation {
 public:
     GPS_L5() {     // Constructor
 		xa = make_xa();

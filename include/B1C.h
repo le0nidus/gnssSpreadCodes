@@ -1,3 +1,8 @@
+#include <vector>
+#include <iterator>
+#include <algorithm>
+#include <Constellation.h>
+
 #define BEIDOU_B1C_WEIL_N 10243
 #define BEIDOU_B1C_WEIL_N_SECONDARY 3607
 
@@ -6,7 +11,7 @@
 
 #define BEIDOU_B1C_NBR_SATS 63		      //!<Total number of satellites
 
-class B1C {
+class B1C : public Constellation{
 public:
     B1C() {     // Constructor
         residuePrimary = residueCalculator(BEIDOU_B1C_WEIL_N);

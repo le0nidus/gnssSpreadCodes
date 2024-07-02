@@ -1,6 +1,3 @@
-#include <algorithm>
-#include <vector>
-#include <iterator>
 #include <B1C.h>
 
 std::vector<int> B1C::residueCalculator(int N) {
