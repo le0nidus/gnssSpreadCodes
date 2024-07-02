@@ -7,4 +7,5 @@ Implemented:
 
 TODO:
 - Work on making main.cpp simpler, by adding a function in Constellation that prints all sats.
+- Printing to file
 - Add more codes! 🤓
