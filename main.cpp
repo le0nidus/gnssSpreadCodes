@@ -37,7 +37,7 @@ int main() {
 	for (i = 1; i < 64; i++) {
 		vec = gpsl5.generateL5Q(i);
 		std::cout << "PRN: " << i << std::endl;
-		gpsl5.print(vec, GPS_L5_CODE_LENGTH);
+		gpsl5.print(vec, ",");
 		std::cout << std::endl;
 	}
 
@@ -45,7 +45,7 @@ int main() {
 	for (i = 1; i < 64; i++) {
 		vec = gpsl5.generateL5I(i);
 		std::cout << "PRN: " << i << std::endl;
-		gpsl5.print(vec, GPS_L5_CODE_LENGTH);
+		gpsl5.print(vec);
 		std::cout << std::endl;
 	}
 	myfile.close();
