@@ -15,6 +15,7 @@ public:
 private:
     virtual int getSpreadCodeSize() { return 1; }
     virtual std::string getConstellationName() { return "Constellation"; }
+    virtual int getNumberOfSats() { return 1; }
 };
 
 #endif

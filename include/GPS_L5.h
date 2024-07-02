@@ -8,6 +8,8 @@
 #define GPS_L5_REGISTER_SIZE 13
 #define GPS_L5_XB_SIZE 8191
 
+#define GPS_L5_NUMBER_OF_SATS 63		      //Total number of satellites
+
 
 class GPS_L5 : public Constellation {
 public:
@@ -22,6 +24,7 @@ private:
 
 	int getSpreadCodeSize() { return GPS_L5_CODE_LENGTH; }
 	std::string getConstellationName() { return "GPS L5"; }
+	int getNumberOfSats() { return GPS_L5_NUMBER_OF_SATS; }
 
 	std::vector<int> xa_shift(std::vector<int>& xa);
 	std::vector<int> xb_shift(std::vector<int>& xb);

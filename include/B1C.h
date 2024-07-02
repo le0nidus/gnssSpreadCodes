@@ -28,6 +28,11 @@ public:
     void printOneCode(std::vector<int> spreadCode, std::string sep);
 
 private:
+
+    int getSpreadCodeSize() { return 0; } //TO CHANGE LATER
+    std::string getConstellationName() { return "BeiDou B1C"; }
+    int getNumberOfSats() { return BEIDOU_B1C_NUMBER_OF_SATS; }
+
     std::vector<int> residueCalculator(int N);
     std::vector<int> generateLegendreSequence(int N, std::vector<int> residue);
     std::vector<int> generateWeilCode(int N, int w, std::vector<int> legendre);
