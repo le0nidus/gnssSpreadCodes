@@ -28,7 +28,7 @@ int main() {
     */
 	std::ofstream myfile;
 	myfile.open("GPS_L5IQ.txt");
-	int i, j;
+	int i;
 	std::vector<int> vec;
 	std::vector<int> result(13);
 	GPS_L5 gpsl5;
