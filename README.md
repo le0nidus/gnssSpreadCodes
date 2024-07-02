@@ -4,3 +4,7 @@ I'll try to implement here as much as I can in my free time :)
 Implemented:
 - 🛰️ BeiDou B1C (B1CPp,B1CPs,B1CDp)
 - 🛰️ GPS L5 (L5I,L5Q)
+
+TODO:
+- Work on making main.cpp simpler, by adding a function in Constellation that prints all sats.
+- Add more codes! 🤓
