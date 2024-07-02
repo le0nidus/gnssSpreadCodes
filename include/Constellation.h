@@ -14,8 +14,12 @@ public:
 
 private:
     virtual int getSpreadCodeSize() { return 1; }
+    virtual int getSpreadCodeSize2() { return 2; }
     virtual std::string getConstellationName() { return "Constellation"; }
     virtual int getNumberOfSats() { return 1; }
+
+protected:
+    bool oneSizeConstellation = true;
 };
 
 #endif

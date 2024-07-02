@@ -14,6 +14,7 @@
 class B1C : public Constellation{
 public:
     B1C() {     // Constructor
+        oneSizeConstellation = false;
         residuePrimary = residueCalculator(BEIDOU_B1C_WEIL_N);
         legendrePrimary = generateLegendreSequence(BEIDOU_B1C_WEIL_N, residuePrimary);
         residueSecondary = residueCalculator(BEIDOU_B1C_WEIL_N_SECONDARY);
@@ -24,14 +25,12 @@ public:
     std::vector<int> generatePrimaryPilot(int prn);
     std::vector<int> generateSecondaryPilot(int prn);
 
-    void printOneCode(std::vector<int> spreadCode);
-    void printOneCode(std::vector<int> spreadCode, std::string sep);
-
 private:
 
-    int getSpreadCodeSize() { return 0; } //TO CHANGE LATER
+    int getSpreadCodeSize() { return BEIDOU_B1C_PRIMARY_CODE_LENGTH; }
+    int getSpreadCodeSize2() { return BEIDOU_B1C_SECONDARY_CODE_LENGTH; }
     std::string getConstellationName() { return "BeiDou B1C"; }
-    int getNumberOfSats() { return BEIDOU_B1C_NUMBER_OF_SATS; }
+    int getNumberOfSats() { return BEIDOU_B1C_NUMBER_OF_SATS; }    
 
     std::vector<int> residueCalculator(int N);
     std::vector<int> generateLegendreSequence(int N, std::vector<int> residue);
