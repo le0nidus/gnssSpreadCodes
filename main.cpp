@@ -15,21 +15,21 @@ int main() {
 	GPS_L5 gpsl5;
 	std::cout << "/===========BeiDou B1C Code===========/\n";
 	std::cout << "Secondary Pilot Code\n";
-	for (prn = 1; prn < BEIDOU_B1C_NBR_SATS + 1; prn++) {
+	for (prn = 1; prn < BEIDOU_B1C_NUMBER_OF_SATS + 1; prn++) {
 		std::cout << "PRN: " << prn << std::endl;
 		vec = B1C_spreadCode.generateSecondaryPilot(prn);
 		B1C_spreadCode.printOneCode(vec);
 		std::cout << std::endl;
 	}
 	std::cout << "Primary Pilot Code\n";
-	for (prn = 1; prn < BEIDOU_B1C_NBR_SATS + 1; prn++) {
+	for (prn = 1; prn < BEIDOU_B1C_NUMBER_OF_SATS + 1; prn++) {
 		std::cout << "PRN: " << prn << std::endl;
 		vec = B1C_spreadCode.generatePrimaryPilot(prn);
 		B1C_spreadCode.printOneCode(vec);
 		std::cout << std::endl;
 	}
 	std::cout << "Primary Data Code\n";
-	for (prn = 1; prn < BEIDOU_B1C_NBR_SATS + 1; prn++) {
+	for (prn = 1; prn < BEIDOU_B1C_NUMBER_OF_SATS + 1; prn++) {
 		std::cout << "PRN: " << prn << std::endl;
 		vec = B1C_spreadCode.generatePrimaryData(prn);
 		B1C_spreadCode.printOneCode(vec);

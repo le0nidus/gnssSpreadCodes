@@ -9,7 +9,7 @@
 #define BEIDOU_B1C_PRIMARY_CODE_LENGTH 10230  // Each primary code of Pilot/Data components has the length 10230 chips.
 #define BEIDOU_B1C_SECONDARY_CODE_LENGTH 1800  // Each secondary code of Pilot component has the length 1800 chips.
 
-#define BEIDOU_B1C_NBR_SATS 63		      //!<Total number of satellites
+#define BEIDOU_B1C_NUMBER_OF_SATS 63		      //Total number of satellites
 
 class B1C : public Constellation{
 public:
@@ -39,7 +39,7 @@ private:
 
     //!====================================PRIMARY CODE PARAMETERS OF B1C DATA COMPONENTS=============================================
     //!Phase difference(w) table data for Data Component
-    const int dataPrimaryPhaseDiff[BEIDOU_B1C_NBR_SATS] = {
+    const int dataPrimaryPhaseDiff[BEIDOU_B1C_NUMBER_OF_SATS] = {
         2678, 4802,  958,  859, 3843,
         2232,  124, 4352, 1816, 1126,
         1860, 4800, 2267,  424, 4192,
@@ -55,7 +55,7 @@ private:
         4203,  455, 4318 };
 
     //Truncation Point(p) table data for Data Component
-    const int dataPrimaryTruncPoint[BEIDOU_B1C_NBR_SATS] = {
+    const int dataPrimaryTruncPoint[BEIDOU_B1C_NUMBER_OF_SATS] = {
         699  ,  694, 7318, 2127,  715,
         6682 , 7850, 5495, 1162, 7682,
         6792 , 9973, 6596, 2092,   19,
@@ -73,7 +73,7 @@ private:
 
     //!================================PRIMARY CODE PARAMETERS OF B1C PILOT COMPONENTS=============================================      
     //Phase difference(w) table data for Pilot Component          	
-    const int pilotPrimaryPhaseDiff[BEIDOU_B1C_NBR_SATS] = {
+    const int pilotPrimaryPhaseDiff[BEIDOU_B1C_NUMBER_OF_SATS] = {
         796,  156, 4198, 3941, 1374,
         1338, 1833, 2521, 3175,  168,
         2715, 4408, 3160, 2796,  459,
@@ -89,7 +89,7 @@ private:
         4098, 1923, 1176 };
 
     //Truncation Point(p) table data for Pilot Component        
-    const int pilotPrimaryTruncPoint[BEIDOU_B1C_NBR_SATS] = {
+    const int pilotPrimaryTruncPoint[BEIDOU_B1C_NUMBER_OF_SATS] = {
         7575, 2369, 5688,  539, 2270,
         7306, 6457, 6254, 5644, 7119,
         1402, 5557, 5764, 1073, 7001,
@@ -107,7 +107,7 @@ private:
     //!===================================SECONDARY CODE PARAMETERS OF B1C PILOT COMPONENTS=============================================
 
     //Phase difference(w) table data for Pilot Component          	
-    const int pilotSecondaryPhaseDiff[BEIDOU_B1C_NBR_SATS] = {
+    const int pilotSecondaryPhaseDiff[BEIDOU_B1C_NUMBER_OF_SATS] = {
         269 , 1448, 1028, 1324,  822,
         5   ,  155,  458,  310,  959,
         1238, 1180, 1288,  334,  885,
@@ -123,7 +123,7 @@ private:
         929 , 1002, 1149 };
 
     //Truncation Point(p) table data for Pilot Component        
-    const int pilotSecondaryTruncPoint[BEIDOU_B1C_NBR_SATS] = {
+    const int pilotSecondaryTruncPoint[BEIDOU_B1C_NUMBER_OF_SATS] = {
         1889, 1268, 1593, 1186, 1239,
         1930,  176, 1696,   26, 1344,
         1271, 1182, 1381, 1604, 1333,
