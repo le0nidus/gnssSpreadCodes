@@ -13,7 +13,7 @@ int main() {
 	int prn;
 	B1C B1C_spreadCode;
 	GPS_L5 gpsl5;
-	std::cout << "/===========BeiDou B1C Code===========/\n";
+	B1C_spreadCode.printConstellationHeader();
 	std::cout << "Secondary Pilot Code\n";
 	for (prn = 1; prn < BEIDOU_B1C_NUMBER_OF_SATS + 1; prn++) {
 		std::cout << "PRN: " << prn << std::endl;
@@ -37,7 +37,7 @@ int main() {
 	}
     
 	std::cout << std::endl;
-	std::cout << "/===========GPS L5 Code===========/\n";
+	gpsl5.printConstellationHeader();
 	std::cout << "L5Q CODE\n";
 	for (prn = 1; prn < 64; prn++) {
 		vec = gpsl5.generateL5Q(prn);

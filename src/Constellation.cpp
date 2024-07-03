@@ -1,5 +1,8 @@
 #include <Constellation.h>
 
+void Constellation::printConstellationHeader() {
+	std::cout << "/=========== " << getConstellationName() << " Code ===========/\n";
+}
 
 void Constellation::printOneCode(std::vector<int> spreadCode) {
 	int vecSize = (int)spreadCode.size();
