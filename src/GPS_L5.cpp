@@ -17,26 +17,17 @@ std::vector<int> GPS_L5::xb_shift(std::vector<int> xb) {
 	return result;
 }
 
-std::vector<int> GPS_L5::make_xa() {
-	std::vector<int> register_init(GPS_L5_REGISTER_SIZE, 1);
-	std::vector<int> y(GPS_L5_CODE_LENGTH);
+void GPS_L5::make_xa_xb(std::vector<int> &xa, std::vector<int>& xb) {
+	std::vector<int> register_init_xa(GPS_L5_REGISTER_SIZE, 1);
+	std::vector<int> register_init_xb(GPS_L5_REGISTER_SIZE, 1);
 	for (int i = 0; i < GPS_L5_CODE_LENGTH; ++i) {
-		y[i] = register_init[GPS_L5_REGISTER_SIZE - 1];
-		register_init = xa_shift(register_init);
+		xa.push_back(register_init_xa[GPS_L5_REGISTER_SIZE - 1]);
+		xb.push_back(register_init_xb[GPS_L5_REGISTER_SIZE - 1]);
+		register_init_xa = xa_shift(register_init_xa);
+		register_init_xb = xb_shift(register_init_xb);
 	}
-	return y;
+	return;
 }
-
-std::vector<int> GPS_L5::make_xb() {
-	std::vector<int> register_init(GPS_L5_REGISTER_SIZE, 1);
-	std::vector<int> y(GPS_L5_XB_SIZE);
-	for (int i = 0; i < GPS_L5_XB_SIZE; ++i) {
-		y[i] = register_init[GPS_L5_REGISTER_SIZE - 1];
-		register_init = xb_shift(register_init);
-	}
-	return y;
-}
-
 
 std::vector<int> GPS_L5::generateL5I(int prn) {
 	std::vector<int> code(GPS_L5_CODE_LENGTH);

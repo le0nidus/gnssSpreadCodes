@@ -13,9 +13,8 @@
 
 class GPS_L5 : public Constellation {
 public:
-    GPS_L5() {     // Constructor
-		xa = make_xa();
-		xb = make_xb();
+    GPS_L5() {     // Constructor		
+		make_xa_xb(xa, xb);
     }
 	std::vector<int> generateL5I(int prn);
 	std::vector<int> generateL5Q(int prn);
@@ -25,11 +24,10 @@ private:
 	int getSpreadCodeSize() { return GPS_L5_CODE_LENGTH; }
 	std::string getConstellationName() { return "GPS L5"; }
 	int getNumberOfSats() { return GPS_L5_NUMBER_OF_SATS; }
-
+	
+	void make_xa_xb(std::vector<int>& xa, std::vector<int>& xb);
 	std::vector<int> xa_shift(std::vector<int> xa);
 	std::vector<int> xb_shift(std::vector<int> xb);
-	std::vector<int> make_xa();
-	std::vector<int> make_xb();
 	std::vector<int> xa_stop_vec = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1 };
 	std::vector<int> xa_all_ones_vec = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 
