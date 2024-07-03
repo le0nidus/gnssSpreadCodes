@@ -16,11 +16,12 @@ public:
     GPS_L5() {     // Constructor		
 		make_xa_xb(xa, xb);
     }
-	std::vector<int> generateL5I(int prn);
-	std::vector<int> generateL5Q(int prn);
+	std::vector<int> generateL5I(int prn) { return generateL5Code(l5i_init[prn]); };
+	std::vector<int> generateL5Q(int prn) { return generateL5Code(l5q_init[prn]); };
 
 private:
 
+	std::vector<int> generateL5Code(int offset);
 	int getSpreadCodeSize() { return GPS_L5_CODE_LENGTH; }
 	std::string getConstellationName() { return "GPS L5"; }
 	int getNumberOfSats() { return GPS_L5_NUMBER_OF_SATS; }

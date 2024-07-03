@@ -29,31 +29,12 @@ void GPS_L5::make_xa_xb(std::vector<int> &xa, std::vector<int>& xb) {
 	return;
 }
 
-std::vector<int> GPS_L5::generateL5I(int prn) {
+std::vector<int> GPS_L5::generateL5Code(int offset) {
 	std::vector<int> code(GPS_L5_CODE_LENGTH);
-	int xb_offset = 0;
 	int xb_shift_i;
-
-	xb_offset = l5i_init[prn];
-
 	for (int i = 0; i < GPS_L5_CODE_LENGTH; ++i) {
-		xb_shift_i = xb[(xb_offset + i) % GPS_L5_XB_SIZE];
+		xb_shift_i = xb[(offset + i) % GPS_L5_XB_SIZE];
 		code[i] = (xa[i] ^ xb_shift_i);
 	}
-	return code;
-}
-
-std::vector<int> GPS_L5::generateL5Q(int prn) {
-	std::vector<int> code(GPS_L5_CODE_LENGTH);
-	int xb_offset = 0;
-	int xb_shift_i;
-
-	xb_offset = l5q_init[prn];
-
-	for (int i = 0; i < GPS_L5_CODE_LENGTH; ++i) {
-		xb_shift_i = xb[(xb_offset + i) % GPS_L5_XB_SIZE];
-		code[i] = (xa[i] ^ xb_shift_i);
-	}
-
 	return code;
 }
