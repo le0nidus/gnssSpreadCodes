@@ -1,13 +1,19 @@
 #include <B1C.h>
 
 std::vector<int> B1C::residueCalculator(int N) {
-    std::vector<int> residue;
-    for (int i = 0; i < (N + 1) / 2; ++i) {
-        int res = i * i % N;
-        if (std::find(residue.begin(), residue.end(), res) == residue.end())
-            residue.push_back(res);
-    }
-    return residue;
+    // Create a set to efficiently store unique residues
+    std::set<int> residues;
+
+    // Generate a sequence from 0 to (N+1)/2 using iota (with +1 increments)
+    std::vector<int> squares((N + 1) / 2);
+    std::iota(squares.begin(), squares.end(), 0);
+
+    // Calculate squares modulo N and insert into the set
+    std::transform(squares.begin(), squares.end(), std::inserter(residues, residues.end()),
+        [&N](int x) { return (x * x) % N; });
+
+    // Convert the set to a vector for return
+    return std::vector<int>(residues.begin(), residues.end());
 }
 
 std::vector<int> B1C::generateLegendreSequence(int N, std::vector<int> residue) {
@@ -21,15 +27,6 @@ std::vector<int> B1C::generateLegendreSequence(int N, std::vector<int> residue) 
     }
     return legendre;
 }
-
-
-/* //OLD CODE, does the same.
-std::vector<int> B1C::generateWeilCode(int N, int w, std::vector<int> legendre) {
-    std::vector<int> weil_code;
-    for (int i = 0; i < N; ++i)
-        weil_code.push_back((legendre[i] + legendre[(i + w) % N]) % 2);
-    return weil_code;
-}*/
 
 std::vector<int> B1C::generateWeilCode(int N, int w, std::vector<int> legendre) {
     std::vector<int> weil_code(N);

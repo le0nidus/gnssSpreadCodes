@@ -1,6 +1,8 @@
 #include <vector>
 #include <iterator>
 #include <algorithm>
+#include <set>
+#include <numeric>
 #include <Constellation.h>
 
 #define BEIDOU_B1C_WEIL_N 10243
