@@ -8,9 +8,9 @@ std::vector<int> B1C::residueCalculator(int N) {
     std::vector<int> squares((N + 1) / 2);
     std::iota(squares.begin(), squares.end(), 0);
 
-    // Calculate squares modulo N and insert into the set
+    // Calculate squares modulo N and insert into the set of residues
     std::transform(squares.begin(), squares.end(), std::inserter(residues, residues.end()),
-        [&N](int x) { return (x * x) % N; });
+        [N](int x) { return (x * x) % N; });
 
     // Convert the set to a vector for return
     return std::vector<int>(residues.begin(), residues.end());
