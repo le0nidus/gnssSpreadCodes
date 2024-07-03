@@ -22,10 +22,19 @@ std::vector<int> B1C::generateLegendreSequence(int N, std::vector<int> residue) 
     return legendre;
 }
 
+
+/* //OLD CODE, does the same.
 std::vector<int> B1C::generateWeilCode(int N, int w, std::vector<int> legendre) {
     std::vector<int> weil_code;
     for (int i = 0; i < N; ++i)
         weil_code.push_back((legendre[i] + legendre[(i + w) % N]) % 2);
+    return weil_code;
+}*/
+
+std::vector<int> B1C::generateWeilCode(int N, int w, std::vector<int> legendre) {
+    std::vector<int> weil_code(N);
+    std::transform(legendre.begin(), legendre.end(), weil_code.begin(),
+        [&legendre, N, w, i = 0](int value) mutable { return (value + legendre[(i++ + w) % N]) % 2; });
     return weil_code;
 }
 
