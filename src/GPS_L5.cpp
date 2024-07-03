@@ -1,10 +1,9 @@
 #include <GPS_L5.h>
 
 
-std::vector<int> GPS_L5::xa_shift(std::vector<int>& xa) {
-	if (xa == std::vector<int>{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1}) {
-		return std::vector<int>{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
-	}
+std::vector<int> GPS_L5::xa_shift(std::vector<int> xa) {
+	if (xa == xa_stop_vec)
+		return xa_all_ones_vec;
 	else {
 		std::vector<int> result(xa.begin(), xa.end() - 1);
 		result.insert(result.begin(), xa[12] ^ xa[11] ^ xa[9] ^ xa[8]);
@@ -12,7 +11,7 @@ std::vector<int> GPS_L5::xa_shift(std::vector<int>& xa) {
 	}
 }
 
-std::vector<int> GPS_L5::xb_shift(std::vector<int>&xb) {
+std::vector<int> GPS_L5::xb_shift(std::vector<int> xb) {
 	std::vector<int> result(xb.begin(), xb.end() - 1);
 	result.insert(result.begin(), xb[12] ^ xb[11] ^ xb[7] ^ xb[6] ^ xb[5] ^ xb[3] ^ xb[2] ^ xb[0]);
 	return result;

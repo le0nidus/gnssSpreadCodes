@@ -26,10 +26,12 @@ private:
 	std::string getConstellationName() { return "GPS L5"; }
 	int getNumberOfSats() { return GPS_L5_NUMBER_OF_SATS; }
 
-	std::vector<int> xa_shift(std::vector<int>& xa);
-	std::vector<int> xb_shift(std::vector<int>& xb);
+	std::vector<int> xa_shift(std::vector<int> xa);
+	std::vector<int> xb_shift(std::vector<int> xb);
 	std::vector<int> make_xa();
 	std::vector<int> make_xb();
+	std::vector<int> xa_stop_vec = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1 };
+	std::vector<int> xa_all_ones_vec = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 
 	std::vector<int> xa;
 	std::vector<int> xb;
