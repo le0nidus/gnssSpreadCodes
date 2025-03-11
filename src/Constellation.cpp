@@ -1,4 +1,4 @@
-#include <Constellation.h>
+#include "../include/Constellation.h"
 
 void Constellation::printConstellationHeader() {
 	std::cout << "/=========== " << getConstellationName() << " Code ===========/\n";

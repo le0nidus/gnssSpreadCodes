@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <set>
 #include <numeric>
-#include <Constellation.h>
+#include "Constellation.h"
 
 #define BEIDOU_B1C_WEIL_N 10243
 #define BEIDOU_B1C_WEIL_N_SECONDARY 3607

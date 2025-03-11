@@ -1,4 +1,4 @@
-#include <B1C.h>
+#include "../include/B1C.h"
 
 std::vector<int> B1C::residueCalculator(int N) {
     // Create a set to efficiently store unique residues
