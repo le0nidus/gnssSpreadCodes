@@ -14,10 +14,10 @@ public:
     void printConstellationHeader();
 
 private:
-    virtual int getSpreadCodeSize() { return 1; }
-    virtual int getSpreadCodeSize2() { return 2; }
-    virtual std::string getConstellationName() { return "Constellation"; }
-    virtual int getNumberOfSats() { return 1; }
+    virtual int getSpreadCodeSize()  = 0;
+    virtual int getSpreadCodeSize2()  = 0;
+    virtual std::string getConstellationName()  = 0;
+    virtual int getNumberOfSats() = 0;
 
 protected:
     bool oneSizeConstellation = true;

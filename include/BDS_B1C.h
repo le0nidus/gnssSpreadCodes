@@ -29,10 +29,10 @@ public:
 
 private:
 
-    int getSpreadCodeSize() { return BEIDOU_B1C_PRIMARY_CODE_LENGTH; }
-    int getSpreadCodeSize2() { return BEIDOU_B1C_SECONDARY_CODE_LENGTH; }
-    std::string getConstellationName() { return "BeiDou B1C"; }
-    int getNumberOfSats() { return BEIDOU_B1C_NUMBER_OF_SATS; }    
+    int getSpreadCodeSize() override { return BEIDOU_B1C_PRIMARY_CODE_LENGTH; }
+    int getSpreadCodeSize2() override { return BEIDOU_B1C_SECONDARY_CODE_LENGTH; }
+    std::string getConstellationName() override { return "BeiDou B1C"; }
+    int getNumberOfSats() override { return BEIDOU_B1C_NUMBER_OF_SATS; }    
 
     std::vector<int> residueCalculator(int N);
     std::vector<int> generateLegendreSequence(int N, std::vector<int> residue);

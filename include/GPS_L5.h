@@ -22,9 +22,11 @@ public:
 private:
 
 	std::vector<int> generateL5Code(int offset);
-	int getSpreadCodeSize() { return GPS_L5_CODE_LENGTH; }
-	std::string getConstellationName() { return "GPS L5"; }
-	int getNumberOfSats() { return GPS_L5_NUMBER_OF_SATS; }
+
+	int getSpreadCodeSize() override { return GPS_L5_CODE_LENGTH; }
+	int getSpreadCodeSize2() override { return 0; }
+	std::string getConstellationName() override { return "GPS L5"; }
+	int getNumberOfSats() override { return GPS_L5_NUMBER_OF_SATS; }
 	
 	void make_xa_xb(std::vector<int>& xa, std::vector<int>& xb);
 	std::vector<int> xa_shift(std::vector<int> xa);

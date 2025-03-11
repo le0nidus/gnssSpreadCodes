@@ -1,7 +1,7 @@
 #include <vector>
 #include <fstream>
 #include <iostream>
-#include "include/B1C.h"
+#include "include/BDS_B1C.h"
 #include "include/GPS_L5.h"
 
 
