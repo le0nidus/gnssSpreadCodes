@@ -4,8 +4,8 @@ void Constellation::printConstellationHeader() {
 	std::cout << "/=========== " << getConstellationName() << " Code ===========/\n";
 }
 
-void Constellation::printOneCode(std::vector<int> spreadCode) {
-	int vecSize = (int)spreadCode.size();
+void Constellation::printOneCode() {
+	int vecSize = (int)prn_code.size();
 	if (oneSizeConstellation) {
 		if (vecSize != getSpreadCodeSize()) {
 			std::cout << "Error printing vector. Invalid " << getConstellationName() << " spread code.";
@@ -19,13 +19,13 @@ void Constellation::printOneCode(std::vector<int> spreadCode) {
 		}
 	}
     for (int j = 0; j < vecSize; j++)
-        std::cout << spreadCode[j];
+        std::cout << prn_code[j];
     std::cout << std::endl;
     return;
 }
 
-void Constellation::printOneCode(std::vector<int> spreadCode, std::string sep) {
-	int vecSize = (int)spreadCode.size();
+void Constellation::printOneCode(std::string sep) {
+	int vecSize = (int)prn_code.size();
 	if (oneSizeConstellation) {
 		if (vecSize != getSpreadCodeSize()) {
 			std::cout << "Error printing vector. Invalid " << getConstellationName() << " spread code.";
@@ -39,7 +39,7 @@ void Constellation::printOneCode(std::vector<int> spreadCode, std::string sep) {
 		}
 	}
     for (int j = 0; j < vecSize; j++)
-        std::cout << spreadCode[j] << sep;
+        std::cout << prn_code[j] << sep;
     std::cout << std::endl;
     return;
 }

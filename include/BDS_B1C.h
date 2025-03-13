@@ -23,9 +23,9 @@ public:
         legendreSecondary = generateLegendreSequence(BEIDOU_B1C_WEIL_N_SECONDARY, residueSecondary);
     }
 
-    std::vector<int> generatePrimaryData(int prn);
-    std::vector<int> generatePrimaryPilot(int prn);
-    std::vector<int> generateSecondaryPilot(int prn);
+    void generatePrimaryData(int prn);
+    void generatePrimaryPilot(int prn);
+    void generateSecondaryPilot(int prn);
 
 private:
 

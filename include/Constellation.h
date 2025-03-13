@@ -9,9 +9,11 @@
 
 class Constellation {
 public:
-    virtual void printOneCode(std::vector<int> spreadCode);
-    virtual void printOneCode(std::vector<int> spreadCode, std::string sep);
+    virtual void printOneCode();
+    virtual void printOneCode(std::string sep);
     void printConstellationHeader();
+
+    std::vector<int> prn_code;
 
 private:
     virtual int getSpreadCodeSize()  = 0;

@@ -36,44 +36,44 @@ std::vector<int> B1C::generateWeilCode(int N, int w, std::vector<int> legendre) 
 }
 
 
-std::vector<int> B1C::generatePrimaryData(int prn) {
+void B1C::generatePrimaryData(int prn) {
     std::vector<int> weil_code;
     weil_code = generateWeilCode(BEIDOU_B1C_WEIL_N, dataPrimaryPhaseDiff[prn - 1], legendrePrimary);
 
-    std::vector<int> weil_out;
+    prn_code.clear();
     if ((BEIDOU_B1C_PRIMARY_CODE_LENGTH + dataPrimaryTruncPoint[prn - 1] - 2) < BEIDOU_B1C_WEIL_N)
-        weil_out = std::vector<int>(weil_code.begin() + dataPrimaryTruncPoint[prn - 1] - 1, weil_code.begin() + dataPrimaryTruncPoint[prn - 1] - 1 + BEIDOU_B1C_PRIMARY_CODE_LENGTH);
+        prn_code = std::vector<int>(weil_code.begin() + dataPrimaryTruncPoint[prn - 1] - 1, weil_code.begin() + dataPrimaryTruncPoint[prn - 1] - 1 + BEIDOU_B1C_PRIMARY_CODE_LENGTH);
     else {
-        weil_out = std::vector<int>(weil_code.begin() + dataPrimaryTruncPoint[prn - 1] - 1, weil_code.end());
-        std::copy(weil_code.begin(), weil_code.begin() + (dataPrimaryTruncPoint[prn - 1] - 1 + BEIDOU_B1C_PRIMARY_CODE_LENGTH) % BEIDOU_B1C_WEIL_N, std::back_inserter(weil_out));
+        prn_code = std::vector<int>(weil_code.begin() + dataPrimaryTruncPoint[prn - 1] - 1, weil_code.end());
+        std::copy(weil_code.begin(), weil_code.begin() + (dataPrimaryTruncPoint[prn - 1] - 1 + BEIDOU_B1C_PRIMARY_CODE_LENGTH) % BEIDOU_B1C_WEIL_N, std::back_inserter(prn_code));
     }
-    return weil_out;
+    return;
 }
 
-std::vector<int> B1C::generatePrimaryPilot(int prn) {
+void B1C::generatePrimaryPilot(int prn) {
     std::vector<int> weil_code;
     weil_code = generateWeilCode(BEIDOU_B1C_WEIL_N, pilotPrimaryPhaseDiff[prn - 1], legendrePrimary);
 
-    std::vector<int> weil_out;
+    prn_code.clear();
     if ((BEIDOU_B1C_PRIMARY_CODE_LENGTH + pilotPrimaryTruncPoint[prn - 1] - 2) < BEIDOU_B1C_WEIL_N)
-        weil_out = std::vector<int>(weil_code.begin() + pilotPrimaryTruncPoint[prn - 1] - 1, weil_code.begin() + pilotPrimaryTruncPoint[prn - 1] - 1 + BEIDOU_B1C_PRIMARY_CODE_LENGTH);
+        prn_code = std::vector<int>(weil_code.begin() + pilotPrimaryTruncPoint[prn - 1] - 1, weil_code.begin() + pilotPrimaryTruncPoint[prn - 1] - 1 + BEIDOU_B1C_PRIMARY_CODE_LENGTH);
     else {
-        weil_out = std::vector<int>(weil_code.begin() + pilotPrimaryTruncPoint[prn - 1] - 1, weil_code.end());
-        std::copy(weil_code.begin(), weil_code.begin() + (pilotPrimaryTruncPoint[prn - 1] - 1 + BEIDOU_B1C_PRIMARY_CODE_LENGTH) % BEIDOU_B1C_WEIL_N, std::back_inserter(weil_out));
+        prn_code = std::vector<int>(weil_code.begin() + pilotPrimaryTruncPoint[prn - 1] - 1, weil_code.end());
+        std::copy(weil_code.begin(), weil_code.begin() + (pilotPrimaryTruncPoint[prn - 1] - 1 + BEIDOU_B1C_PRIMARY_CODE_LENGTH) % BEIDOU_B1C_WEIL_N, std::back_inserter(prn_code));
     }
-    return weil_out;
+    return;
 }
 
-std::vector<int> B1C::generateSecondaryPilot(int prn) {
+void B1C::generateSecondaryPilot(int prn) {
     std::vector<int> weil_code;
     weil_code = generateWeilCode(BEIDOU_B1C_WEIL_N_SECONDARY, pilotSecondaryPhaseDiff[prn - 1], legendreSecondary);
 
-    std::vector<int> weil_out;
+    prn_code.clear();
     if ((BEIDOU_B1C_SECONDARY_CODE_LENGTH + pilotSecondaryTruncPoint[prn - 1] - 2) < BEIDOU_B1C_WEIL_N_SECONDARY)
-        weil_out = std::vector<int>(weil_code.begin() + pilotSecondaryTruncPoint[prn - 1] - 1, weil_code.begin() + pilotSecondaryTruncPoint[prn - 1] - 1 + BEIDOU_B1C_SECONDARY_CODE_LENGTH);
+        prn_code = std::vector<int>(weil_code.begin() + pilotSecondaryTruncPoint[prn - 1] - 1, weil_code.begin() + pilotSecondaryTruncPoint[prn - 1] - 1 + BEIDOU_B1C_SECONDARY_CODE_LENGTH);
     else {
-        weil_out = std::vector<int>(weil_code.begin() + pilotSecondaryTruncPoint[prn - 1] - 1, weil_code.end());
-        std::copy(weil_code.begin(), weil_code.begin() + (pilotSecondaryTruncPoint[prn - 1] - 1 + BEIDOU_B1C_SECONDARY_CODE_LENGTH) % BEIDOU_B1C_WEIL_N_SECONDARY, std::back_inserter(weil_out));
+        prn_code = std::vector<int>(weil_code.begin() + pilotSecondaryTruncPoint[prn - 1] - 1, weil_code.end());
+        std::copy(weil_code.begin(), weil_code.begin() + (pilotSecondaryTruncPoint[prn - 1] - 1 + BEIDOU_B1C_SECONDARY_CODE_LENGTH) % BEIDOU_B1C_WEIL_N_SECONDARY, std::back_inserter(prn_code));
     }
-    return weil_out;
+    return;
 }
