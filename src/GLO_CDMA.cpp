@@ -14,7 +14,7 @@
    Returns:
    - A vector of `numOfBits` integers (0s and 1s) representing the binary equivalent of `n`.
 */
-std::vector<int> dec2bin(int n, int numOfBits) {
+std::vector<int> GLO_CDMA::dec2bin(int n, int numOfBits) {
   std::vector<int> s;
   for (int i = 0; i < numOfBits; i++)
       s.push_back((n >> (numOfBits - 1 - i)) & 1);
@@ -40,7 +40,7 @@ std::vector<int> dec2bin(int n, int numOfBits) {
 
    The function updates the shift register in place.
 */
-void lfsr(std::vector<int> &reg, int taps) {
+void GLO_CDMA::lfsr(std::vector<int> &reg, int taps) {
 	int xor_result = 0;
 	for (int i = 0 ; i < reg.size(); i++) {
 		xor_result ^= reg[i] * (taps & 1);
