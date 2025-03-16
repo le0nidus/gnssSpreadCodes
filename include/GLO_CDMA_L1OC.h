@@ -6,6 +6,11 @@
 #define GLO_CDMA_L1OCd_LENGTH 1023
 #define GLO_CDMA_L1OCp_LENGTH 4092
 
+#define GLO_CDMA_L1OCp_TAPS_G1 3232 // G1 register has 12 stages; XOR feedback is applied to registers 11, 10, 7, 5
+#define GLO_CDMA_L1OCp_TAPS_G2 33 // G2 register has 6 stages; XOR feedback is applied to registers 0, 5
+#define GLO_CDMA_L1OCd_TAPS_G1 576 // G1 register has 10 stages; XOR feedback is applied to registers 9, 6
+#define GLO_CDMA_L1OCd_TAPS_G2 836 // G2 register has 10 stages; XOR feedback is applied to registers 2, 6, 8, 9
+
 class GLO_CDMA_L1 : public GLO_CDMA {
 public:
     GLO_CDMA_L1() {

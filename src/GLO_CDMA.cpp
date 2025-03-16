@@ -51,3 +51,33 @@ void GLO_CDMA::lfsr(std::vector<int> &reg, int taps) {
   std::rotate(reg.rbegin(), reg.rbegin() + 1, reg.rend());
   reg.front() = xor_result;
 }
+
+
+/**
+ * @brief Generates a Pseudo-Random Noise (PRN) code sequence for CDMA.
+ * 
+ * This function generates a PRN sequence by performing a Linear Feedback Shift Register (LFSR) 
+ * operation on two generator sequences (`g1` and `g2`). The PRN code is formed by XORing 
+ * the last elements of `g1` and `g2` at each iteration.
+ * 
+ * @param prn      PRN identifier (not used in this function but likely relevant in the class).
+ * @param g1       First generator sequence (vector representing an LFSR state).
+ * @param g2       Second generator sequence (vector representing an LFSR state).
+ * @param codeLen  Length of the PRN sequence to generate.
+ * @param tapsG1   Taps configuration for `g1` (determines which registers participate in the LFSR feedback).
+ * @param tapsG2   Taps configuration for `g2`.
+ * 
+ * @details 
+ * - The function clears `prn_code` before generating a new sequence.
+ * - It iterates `codeLen` times, computing each "new" PRN bit as `g1.back() ^ g2.back()`.
+ * - The `lfsr` function is called to shift both `g1` and `g2` forward using their respective tap configurations.
+ */
+void GLO_CDMA::generatePRN(int prn, std::vector<int> g1, std::vector<int> g2, int codeLen, int tapsG1, int tapsG2) {
+  prn_code.clear();  // Clear any previously stored PRN sequence
+
+  for (int i = 0; i < codeLen; i++) {
+      prn_code.push_back(g1.back() ^ g2.back()); // XOR last elements of g1 and g2
+      lfsr(g1, tapsG1); // Update g1 using LFSR
+      lfsr(g2, tapsG2); // Update g2 using LFSR
+  }
+}
