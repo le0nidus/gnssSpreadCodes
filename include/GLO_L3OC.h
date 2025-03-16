@@ -21,11 +21,9 @@ private:
 	int getNumberOfSats() override { return GLO_CDMA_NUMBER_OF_SATS; }
 
 	std::vector<int> dec2bin(int n);
-	void shift_g2(std::vector<int> &g2);
-	void shift_g1g3(std::vector<int> &g3);
 
 	void l3oc(int prn, int d_or_p);
-
+	void lfsr(std::vector<int> &reg, int regSize, int taps);
 };
 
 

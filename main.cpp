@@ -16,14 +16,13 @@ int main() {
 	GLO_CDMA_L3 glo_l3oc;
 	int n = 30;
 
-
+	std::cout << "\nL3OCd\n";
 	glo_l3oc.l3ocd(n); //L3OCd
 	glo_l3oc.printOneCode();
 
+	std::cout << "\n\n\nL3OCp\n";
 	glo_l3oc.l3ocp(n); //L3OCp
-	glo_l3oc.printOneCode();
-
-	
+	glo_l3oc.printOneCode();	
 	
 	B1C_spreadCode.printConstellationHeader();
 	std::cout << "Secondary Pilot Code\n";
