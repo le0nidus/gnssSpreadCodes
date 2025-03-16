@@ -7,8 +7,8 @@ void GLO_CDMA_L1::l1ocd(int prn) {
 
 	for (int i = 0; i < GLO_CDMA_LENGTH; i++) {
 		prn_code.push_back(g1[9] ^ g2[9]);
-		lfsr(g1, 10, 576); // G1 register has 10 stages; XOR feedback is applied to registers 9, 6
-		lfsr(g2, 10, 836); // G2 register has 10 stages; XOR feedback is applied to registers 2, 6, 8, 9
+		lfsr(g1, 576); // G1 register has 10 stages; XOR feedback is applied to registers 9, 6
+		lfsr(g2, 836); // G2 register has 10 stages; XOR feedback is applied to registers 2, 6, 8, 9
 	}
 	return;
 }
@@ -20,8 +20,8 @@ void GLO_CDMA_L1::l1ocp(int prn) {
 
 	for (int i = 0; i < GLO_CDMA_LENGTH; i++) {
 		prn_code.push_back(g1[11] ^ g2[5]);
-		lfsr(g1, 12, 3232); // G1 register has 12 stages; XOR feedback is applied to registers 11, 10, 7, 5
-		lfsr(g2, 6, 33); // G2 register has 6 stages; XOR feedback is applied to registers 0, 5
+		lfsr(g1, 3232); // G1 register has 12 stages; XOR feedback is applied to registers 11, 10, 7, 5
+		lfsr(g2, 33); // G2 register has 6 stages; XOR feedback is applied to registers 0, 5
 	}
 	return;
 }

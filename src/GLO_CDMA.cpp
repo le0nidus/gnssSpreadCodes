@@ -36,17 +36,18 @@ std::vector<int> dec2bin(int n, int numOfBits) {
 
    Parameters:
    - `reg`: A reference to a vector representing the shift register.
-   - `regSize`: The number of registers (length of the shift register).
    - `taps`: A bitmask indicating which registers contribute to the feedback XOR.
 
    The function updates the shift register in place.
 */
-void lfsr(std::vector<int> &reg, int regSize, int taps) {
+void lfsr(std::vector<int> &reg, int taps) {
 	int xor_result = 0;
-	for (int i = 0 ; i < regSize; i++) {
+	for (int i = 0 ; i < reg.size(); i++) {
 		xor_result ^= reg[i] * (taps & 1);
 		taps = taps >> 1;
 	}
-	reg.emplace(reg.begin(), xor_result);
-	reg.pop_back();
+	
+  // Rotate right and place XOR result at the beginning
+  std::rotate(reg.rbegin(), reg.rbegin() + 1, reg.rend());
+  reg.front() = xor_result;
 }
