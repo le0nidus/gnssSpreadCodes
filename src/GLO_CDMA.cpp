@@ -1,25 +1,24 @@
 #include "../include/GLO_CDMA.h"
 
 /*
-   Converts a decimal number to a 7-bit binary representation.
+   Converts a decimal number to a binary representation with a specified number of bits.
 
-   - The function extracts each bit from the most significant (6th) to 
-     the least significant (0th) position.
-   - It shifts the input number `n` right and applies a bitwise AND with 1 
-     to isolate each bit.
+   - The function extracts each bit from the most significant to the least significant position.
+   - It shifts the input number `n` right and applies a bitwise AND with 1 to isolate each bit.
    - The resulting bits are stored in a vector in order from MSB to LSB.
 
-   Parameter:
-   - `n`: The decimal number to convert (expected to fit within 7 bits).
+   Parameters:
+   - `n`: The decimal number to convert.
+   - `numOfBits`: The number of bits in the output binary representation.
 
    Returns:
-   - A vector of 7 integers (0s and 1s) representing the binary equivalent of `n`.
+   - A vector of `numOfBits` integers (0s and 1s) representing the binary equivalent of `n`.
 */
-std::vector<int> dec2bin(int n) {
-    std::vector<int> s;
-    for (int i = 0; i <= 6; i++)
-        s.push_back((n >> (6 - i)) & 1);
-    return s;
+std::vector<int> dec2bin(int n, int numOfBits) {
+  std::vector<int> s;
+  for (int i = 0; i < numOfBits; i++)
+      s.push_back((n >> (numOfBits - 1 - i)) & 1);
+  return s;
 }
 
 

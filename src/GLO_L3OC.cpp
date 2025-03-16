@@ -13,7 +13,7 @@ void GLO_CDMA_L3::l3ocp(int prn) {
 void GLO_CDMA_L3::l3oc(int prn, int d_or_p) {
 	prn_code.clear();
 	std::vector<int> g2 = {0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0};
-	std::vector<int> g1g3 = dec2bin(prn + d_or_p);
+	std::vector<int> g1g3 = dec2bin(prn + d_or_p, 7);
 
 	for (int i = 0; i < GLO_CDMA_LENGTH; i++) {
 		prn_code.push_back(g1g3[6] ^ g2[13]);
