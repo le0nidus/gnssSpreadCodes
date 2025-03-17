@@ -27,17 +27,17 @@ private:
 
 
 class GLO_CDMA_L2 : public GLO_CDMA {
-	public:
-		GLO_CDMA_L2() {}
-		void l2ocp(int prn);
-	
-	private:
-		const std::vector<int> g2_init = {0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0};
+public:
+	GLO_CDMA_L2() {}
+	void l2ocp(int prn);
 
-		int getSpreadCodeSize() override { return GLO_CDMA_L2L3_LENGTH; }
-		int getSpreadCodeSize2() override { return 0; }
-		std::string getConstellationName() override { return "GLONASS CDMA L2"; }
-	};
+private:
+	const std::vector<int> g2_init = {0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0};
+
+	int getSpreadCodeSize() override { return GLO_CDMA_L2L3_LENGTH; }
+	int getSpreadCodeSize2() override { return 0; }
+	std::string getConstellationName() override { return "GLONASS CDMA L2"; }
+};
 
 
 
