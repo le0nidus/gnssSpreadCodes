@@ -20,7 +20,9 @@ public:
 	void l1ocp(int prn);
 
 private:
-
+	const std::vector<int> l1ocd_g1_init = {0, 0, 1, 1, 0, 0, 1, 0, 0, 0};
+	const std::vector<int> l1ocp_g1_init = {0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1};
+	
 	int getSpreadCodeSize() override { return GLO_CDMA_L1OCd_LENGTH; } //Length of L1OCd
 	int getSpreadCodeSize2() override { return GLO_CDMA_L1OCp_LENGTH; } //Length of L1OCp
 	std::string getConstellationName() override { return "GLONASS CDMA L1"; }
