@@ -1,6 +1,4 @@
-#include <algorithm>
 #include <vector>
-#include <iterator>
 #include "GLO_CDMA.h"
 
 #define GLO_CDMA_L1OCd_LENGTH 1023

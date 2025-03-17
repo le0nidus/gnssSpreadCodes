@@ -9,9 +9,10 @@
 
 int main() {
 	int prn;
-	B1C B1C_spreadCode;
+	BDS_B1C B1C_spreadCode;
 	GPS_L5 gpsl5;
 	GLO_CDMA_L3 glo_l3oc;
+	GLO_CDMA_L2 glo_l2oc;
 	GLO_CDMA_L1 glo_l1oc;
 	int n = 30;
 
@@ -21,7 +22,11 @@ int main() {
 
 	std::cout << "\n\n\nL1OCp\n";
 	glo_l1oc.l1ocp(n); //L1OCp
-	glo_l1oc.printOneCode();	
+	glo_l1oc.printOneCode();
+
+	std::cout << "\n\n\nL2OCp\n";
+	glo_l2oc.l2ocp(n); //L2OCp
+	glo_l2oc.printOneCode();	
 
 	std::cout << "\nL3OCd\n";
 	glo_l3oc.l3ocd(n); //L3OCd

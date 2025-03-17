@@ -13,9 +13,9 @@
 
 #define BEIDOU_B1C_NUMBER_OF_SATS 63		      //Total number of satellites
 
-class B1C : public Constellation{
+class BDS_B1C : public Constellation{
 public:
-    B1C() {     // Constructor
+    BDS_B1C() {     // Constructor
         oneSizeConstellation = false;
         residuePrimary = residueCalculator(BEIDOU_B1C_WEIL_N);
         legendrePrimary = generateLegendreSequence(BEIDOU_B1C_WEIL_N, residuePrimary);

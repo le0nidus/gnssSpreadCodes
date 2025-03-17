@@ -1,6 +1,6 @@
 #include "../include/BDS_B1C.h"
 
-std::vector<int> B1C::residueCalculator(int N) {
+std::vector<int> BDS_B1C::residueCalculator(int N) {
     // Create a set to efficiently store unique residues
     std::set<int> residues;
 
@@ -16,7 +16,7 @@ std::vector<int> B1C::residueCalculator(int N) {
     return std::vector<int>(residues.begin(), residues.end());
 }
 
-std::vector<int> B1C::generateLegendreSequence(int N, std::vector<int> residue) {
+std::vector<int> BDS_B1C::generateLegendreSequence(int N, std::vector<int> residue) {
     std::vector<int> legendre;
     legendre.push_back(0);
     for (int i = 1; i < N; ++i) {
@@ -28,7 +28,7 @@ std::vector<int> B1C::generateLegendreSequence(int N, std::vector<int> residue) 
     return legendre;
 }
 
-std::vector<int> B1C::generateWeilCode(int N, int w, std::vector<int> legendre) {
+std::vector<int> BDS_B1C::generateWeilCode(int N, int w, std::vector<int> legendre) {
     std::vector<int> weil_code(N);
     std::transform(legendre.begin(), legendre.end(), weil_code.begin(),
         [&legendre, N, w, i = 0](int value) mutable { return (value + legendre[(i++ + w) % N]) % 2; });
@@ -36,7 +36,7 @@ std::vector<int> B1C::generateWeilCode(int N, int w, std::vector<int> legendre) 
 }
 
 
-void B1C::generatePrimaryData(int prn) {
+void BDS_B1C::generatePrimaryData(int prn) {
     std::vector<int> weil_code;
     weil_code = generateWeilCode(BEIDOU_B1C_WEIL_N, dataPrimaryPhaseDiff[prn - 1], legendrePrimary);
 
@@ -50,7 +50,7 @@ void B1C::generatePrimaryData(int prn) {
     return;
 }
 
-void B1C::generatePrimaryPilot(int prn) {
+void BDS_B1C::generatePrimaryPilot(int prn) {
     std::vector<int> weil_code;
     weil_code = generateWeilCode(BEIDOU_B1C_WEIL_N, pilotPrimaryPhaseDiff[prn - 1], legendrePrimary);
 
@@ -64,7 +64,7 @@ void B1C::generatePrimaryPilot(int prn) {
     return;
 }
 
-void B1C::generateSecondaryPilot(int prn) {
+void BDS_B1C::generateSecondaryPilot(int prn) {
     std::vector<int> weil_code;
     weil_code = generateWeilCode(BEIDOU_B1C_WEIL_N_SECONDARY, pilotSecondaryPhaseDiff[prn - 1], legendreSecondary);
 
