@@ -4,38 +4,41 @@
 #include <unordered_map>
 #include "Constellation.h"
 
-#define LUNANET_NUMBER_OF_SATS 0
+#define LUNANET_NUMBER_OF_SATS 210
 #define LUNANET_AFSI_CODE_LENGTH 2046
 #define LUNANET_AFSI_TAPS_G1 1026
 #define LUNANET_AFSI_TAPS_G2 1170
 #define LUNANET_AFSI_NUM_REGISTERS_IN_G2 11
 
-#define LUNANET_WEIL_N 10223
+#define LUNANET_PRIMARY_WEIL_N 10223
 #define LUNANET_AFSQ_PRIMARY_CODE_LENGTH 10230
 
+#define LUNANET_TRIETARY_WEIL_N 1499
 #define LUNANET_AFSQ_TRIETARY_CODE_LENGTH 1500
 
 class LunaNet : public Constellation {
 public:
 	LunaNet() {
-		oneSizeConstellation = false;
-        residue = residueCalculator(LUNANET_WEIL_N);
-        legendre = generateLegendreSequence(LUNANET_WEIL_N, residue);
+        residuePrimary = residueCalculator(LUNANET_PRIMARY_WEIL_N);
+        legendrePrimary = generateLegendreSequence(LUNANET_PRIMARY_WEIL_N, residuePrimary);
+        residueTrietary = residueCalculator(LUNANET_TRIETARY_WEIL_N);
+        legendreTrietary = generateLegendreSequence(LUNANET_TRIETARY_WEIL_N, residueTrietary);
 	}
 	void afs_i(int prn);
-    void afs_q(int prn);
+    void afs_q_primary(int prn);
+    void afs_q_trietary(int prn);
 	
 
 private:
 
-    int getSpreadCodeSize() override { return LUNANET_AFSI_CODE_LENGTH; } //Length of Luna Net PRN
-    int getSpreadCodeSize2() override { return LUNANET_AFSQ_PRIMARY_CODE_LENGTH; } //Length of Luna Net PRN
     std::string getConstellationName() override { return "Luna Net"; }
     int getNumberOfSats() override { return LUNANET_NUMBER_OF_SATS; }
 
 	std::vector<int> afs_i_g1_init = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
-    std::vector<int> residue;
-    std::vector<int> legendre;
+    std::vector<int> residuePrimary;
+    std::vector<int> legendrePrimary;
+    std::vector<int> residueTrietary;
+    std::vector<int> legendreTrietary;
     const std::vector<int> insertion_afs_q_primary = {0, 1, 1, 0, 1, 0, 0};
 
 // Tables for AFS-I

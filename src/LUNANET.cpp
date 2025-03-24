@@ -14,13 +14,23 @@ void LunaNet::afs_i(int prn) {
 	return;
 }
 
-void LunaNet::afs_q(int prn) {
+void LunaNet::afs_q_primary(int prn) {
 	if (!checkValidPRN(prn))
 		return; //BAD PRN so we don't create it
 	prn_code.clear();
-    prn_code = generateWeilCode(LUNANET_WEIL_N, afs_q_primary_weil_parameters.at(prn).first, legendre);
+    prn_code = generateWeilCode(LUNANET_PRIMARY_WEIL_N, afs_q_primary_weil_parameters.at(prn).first, legendrePrimary);
 	prn_code.insert(prn_code.begin() + (afs_q_primary_weil_parameters.at(prn).second - 1), insertion_afs_q_primary.begin(), insertion_afs_q_primary.end());
 	return;
 }
+
+void LunaNet::afs_q_trietary(int prn) {
+	if (!checkValidPRN(prn))
+		return; //BAD PRN so we don't create it
+	prn_code.clear();
+    prn_code = generateWeilCode(LUNANET_TRIETARY_WEIL_N, afs_q_trietary_weil_parameters.at(prn), legendreTrietary);
+	prn_code.push_back(0);
+	return;
+}
+
 
 

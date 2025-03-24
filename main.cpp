@@ -5,6 +5,7 @@
 #include "include/GPS_L5.h"
 #include "include/GLO_CDMA_L1OC.h"
 #include "include/GLO_CDMA_L2L3OC.h"
+#include "include/LUNANET.h"
 
 
 int main() {
@@ -17,12 +18,16 @@ int main() {
 	LunaNet lunaNet;
 	int n = 30;
 
+	std::cout << "\nLunaNet AFS-Q Trietary\n";
+	lunaNet.afs_q_trietary(n); //AFS-Q Trietary
+	lunaNet.printOneCode();
+
 	std::cout << "\nLunaNet AFS-I\n";
 	lunaNet.afs_i(n); //AFS-I
 	lunaNet.printOneCode();
 
-	std::cout << "\nLunaNet AFS-Q\n";
-	lunaNet.afs_q(n); //AFS-Q
+	std::cout << "\nLunaNet AFS-Q Primary\n";
+	lunaNet.afs_q_primary(n); //AFS-Q Primary
 	lunaNet.printOneCode();
 
 	std::cout << "\nL1OCd\n";

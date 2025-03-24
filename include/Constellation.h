@@ -19,13 +19,10 @@ public:
     std::vector<int> prn_code;
 
 private:
-    virtual int getSpreadCodeSize()  = 0;
-    virtual int getSpreadCodeSize2()  = 0;
     virtual std::string getConstellationName()  = 0;
     virtual int getNumberOfSats() = 0;
 
 protected:
-    bool oneSizeConstellation = true;
     bool checkValidPRN(int prn);
     
     void lfsr(std::vector<int> &reg, int taps);

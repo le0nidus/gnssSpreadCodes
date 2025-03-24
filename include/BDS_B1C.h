@@ -11,7 +11,6 @@
 class BDS_B1C : public Constellation{
 public:
     BDS_B1C() {     // Constructor
-        oneSizeConstellation = false;
         residuePrimary = residueCalculator(BEIDOU_B1C_WEIL_N);
         legendrePrimary = generateLegendreSequence(BEIDOU_B1C_WEIL_N, residuePrimary);
         residueSecondary = residueCalculator(BEIDOU_B1C_WEIL_N_SECONDARY);
@@ -24,8 +23,6 @@ public:
 
 private:
 
-    int getSpreadCodeSize() override { return BEIDOU_B1C_PRIMARY_CODE_LENGTH; }
-    int getSpreadCodeSize2() override { return BEIDOU_B1C_SECONDARY_CODE_LENGTH; }
     std::string getConstellationName() override { return "BeiDou B1C"; }
     int getNumberOfSats() override { return BEIDOU_B1C_NUMBER_OF_SATS; }    
 

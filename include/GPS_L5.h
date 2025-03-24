@@ -23,8 +23,6 @@ private:
 
 	std::vector<int> generateL5Code(int offset);
 
-	int getSpreadCodeSize() override { return GPS_L5_CODE_LENGTH; }
-	int getSpreadCodeSize2() override { return 0; }
 	std::string getConstellationName() override { return "GPS L5"; }
 	int getNumberOfSats() override { return GPS_L5_NUMBER_OF_SATS; }
 	

@@ -15,8 +15,6 @@ public:
 private:
 	const std::vector<int> g2_init = {0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0};
 	
-	int getSpreadCodeSize() override { return GLO_CDMA_L2L3_LENGTH; }
-	int getSpreadCodeSize2() override { return 0; }
 	std::string getConstellationName() override { return "GLONASS CDMA L3"; }
 
 	void l3oc(int prn, int d_or_p);
@@ -32,8 +30,6 @@ public:
 private:
 	const std::vector<int> g2_init = {0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0};
 
-	int getSpreadCodeSize() override { return GLO_CDMA_L2L3_LENGTH; }
-	int getSpreadCodeSize2() override { return 0; }
 	std::string getConstellationName() override { return "GLONASS CDMA L2"; }
 };
 
