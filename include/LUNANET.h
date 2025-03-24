@@ -5,24 +5,41 @@
 #include "Constellation.h"
 
 #define LUNANET_NUMBER_OF_SATS 0
-#define LUNANET_SPREAD_CODE_LENGTH 2046
+#define LUNANET_AFSI_CODE_LENGTH 2046
 #define LUNANET_AFSI_TAPS_G1 1026
 #define LUNANET_AFSI_TAPS_G2 1170
+#define LUNANET_AFSI_NUM_REGISTERS_IN_G2 11
 
+#define LUNANET_WEIL_N 10223
+#define LUNANET_AFSQ_PRIMARY_CODE_LENGTH 10230
+
+#define LUNANET_AFSQ_TRIETARY_CODE_LENGTH 1500
 
 class LunaNet : public Constellation {
 public:
 	LunaNet() {
 		oneSizeConstellation = false;
+        residue = residueCalculator(LUNANET_WEIL_N);
+        legendre = generateLegendreSequence(LUNANET_WEIL_N, residue);
 	}
 	void afs_i(int prn);
+    void afs_q(int prn);
 	
 
 private:
+
+    int getSpreadCodeSize() override { return LUNANET_AFSI_CODE_LENGTH; } //Length of Luna Net PRN
+    int getSpreadCodeSize2() override { return LUNANET_AFSQ_PRIMARY_CODE_LENGTH; } //Length of Luna Net PRN
+    std::string getConstellationName() override { return "Luna Net"; }
+    int getNumberOfSats() override { return LUNANET_NUMBER_OF_SATS; }
+
 	std::vector<int> afs_i_g1_init = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+    std::vector<int> residue;
+    std::vector<int> legendre;
+    const std::vector<int> insertion_afs_q_primary = {0, 1, 1, 0, 1, 0, 0};
 
 // Tables for AFS-I
-std::unordered_map<int, int> g2Register = {
+const std::unordered_map<int, int> g2RegisterInit = {
     {1,   0x514}, {2,   0x59E}, {3,   0x49A}, {4,   0x346},
     {5,   0x78B}, {6,   0x341}, {7,   0x17D}, {8,   0x7AB},
     {9,   0x301}, {10,  0x32E}, {11,  0x4DE}, {12,  0x29C},
@@ -78,7 +95,7 @@ std::unordered_map<int, int> g2Register = {
 };
 
 //Tables for AFS-Q
-std::unordered_map<int, std::pair<int, int>> weilCode = {
+const std::unordered_map<int, std::pair<int, int>> afs_q_primary_weil_parameters = {
     {1,   {5111,   412}}, {2,   {5109,   161}}, {3,   {5108,    1}}, {4,   {5106,   303}},
     {5,   {5103,   207}}, {6,   {5101,  4971}}, {7,   {5100, 4496}}, {8,   {5098,     5}},
     {9,   {5095,  4557}}, {10,  {5094,   485}}, {11,  {5093,  253}}, {12,  {5091,  4676}},
@@ -118,7 +135,7 @@ std::unordered_map<int, std::pair<int, int>> weilCode = {
 };
 
 //AFS-Q Weil Index(k)
-std::unordered_map<int, int> weilIndexMap = {
+const std::unordered_map<int, int> afs_q_trietary_weil_parameters = {
     {1,     1}, {2,   229}, {3,   237}, {4,   241}, {5,   253}, {6,   254}, {7,   255}, {8,   256}, {9,   257}, {10,  267},
     {11,  276}, {12,  283}, {13,  301}, {14,  319}, {15,  327}, {16,  328}, {17,  333}, {18,  334}, {19,  335}, {20,  339},
     {21,  340}, {22,  346}, {23,  347}, {24,  350}, {25,  354}, {26,  356}, {27,  357}, {28,  361}, {29,  364}, {30,  365},
@@ -141,36 +158,6 @@ std::unordered_map<int, int> weilIndexMap = {
     {191, 687}, {192, 688}, {193, 689}, {194, 690}, {195, 691}, {196, 697}, {197, 698}, {198, 702}, {199, 705}, {200, 707},
     {201, 710}, {202, 716}, {203, 717}, {204, 718}, {205, 720}, {206, 722}, {207, 723}, {208, 725}, {209, 726}, {210, 729}
 };
-
-const std::vector<int> weilIndexVec = {
-	1,   229, 237, 241, 253, 254, 255, 256, 257, 267,
-    276, 283, 301, 319, 327, 328, 333, 334, 335, 339,
-    340, 346, 347, 350, 354, 356, 357, 361, 364, 365,
-    366, 368, 373, 378, 381, 382, 383, 384, 386, 387,
-    389, 390, 394, 397, 398, 400, 401, 407, 408, 414,
-    415, 416, 426, 431, 432, 433, 436, 437, 438, 439,
-    440, 441, 447, 448, 449, 450, 451, 459, 460, 461,
-    463, 467, 468, 469, 471, 474, 475, 477, 480, 481,
-    485, 487, 488, 489, 490, 491, 492, 495, 496, 498,
-    500, 502, 507, 509, 510, 513, 515, 517, 520, 521,
-    524, 525, 526, 527, 528, 529, 531, 533, 538, 540,
-    542, 543, 544, 549, 551, 552, 553, 554, 555, 556,
-    557, 562, 568, 570, 573, 574, 575, 576, 577, 578,
-    579, 580, 582, 586, 591, 592, 594, 595, 596, 597,
-    598, 599, 601, 604, 605, 606, 607, 608, 609, 610,
-    612, 616, 617, 618, 619, 621, 622, 627, 628, 631,
-    633, 635, 638, 639, 640, 645, 647, 648, 649, 650,
-    651, 654, 656, 658, 660, 661, 662, 665, 668, 669,
-    671, 674, 675, 676, 678, 680, 682, 683, 684, 686,
-    687, 688, 689, 690, 691, 697, 698, 702, 705, 707,
-    710, 716, 717, 718, 720, 722, 723, 725, 726, 729
-};
-
-	
-	int getSpreadCodeSize() override { return LUNANET_SPREAD_CODE_LENGTH; } //Length of Luna Net PRN
-	int getSpreadCodeSize2() override { return 0; } //Length of Luna Net PRN
-	std::string getConstellationName() override { return "Luna Net"; }
-	int getNumberOfSats() override { return LUNANET_NUMBER_OF_SATS; }
 
 };
 

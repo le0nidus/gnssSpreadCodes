@@ -16,8 +16,8 @@ public:
     GPS_L5() {     // Constructor		
 		make_xa_xb(xa, xb);
     }
-	void generateL5I(int prn) { prn_code.clear(); prn_code = generateL5Code(l5i_init[prn]); };
-	void generateL5Q(int prn) { prn_code.clear(); prn_code = generateL5Code(l5q_init[prn]); };
+	void generateL5I(int prn);
+	void generateL5Q(int prn);
 
 private:
 

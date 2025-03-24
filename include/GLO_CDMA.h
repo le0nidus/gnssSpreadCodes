@@ -1,9 +1,6 @@
 #ifndef GLO_CDMA_HEADER
 #define GLO_CDMA_HEADER
 
-#include <algorithm>
-#include <vector>
-#include <iterator>
 #include "Constellation.h"
 
 #define GLO_CDMA_NUMBER_OF_SATS 63

@@ -134,3 +134,66 @@ void Constellation::generatePRN(int prn, std::vector<int> g1, std::vector<int> g
         lfsr(g2, tapsG2); // Update g2 using LFSR
     }
 }
+
+
+
+/* Functions to use for PRN's that are generated with truncating weil codes */
+
+std::vector<int> Constellation::residueCalculator(int N) {
+    // Create a set to efficiently store unique residues
+    std::set<int> residues;
+
+    // Generate a sequence from 0 to (N+1)/2 using iota (with +1 increments)
+    std::vector<int> squares((N + 1) / 2);
+    std::iota(squares.begin(), squares.end(), 0);
+
+    // Calculate squares modulo N and insert into the set of residues
+    std::transform(squares.begin(), squares.end(), std::inserter(residues, residues.end()),
+        [N](int x) { return (x * x) % N; });
+
+    // Convert the set to a vector for return
+    return std::vector<int>(residues.begin(), residues.end());
+}
+
+std::vector<int> Constellation::generateLegendreSequence(int N, std::vector<int> residue) {
+    std::vector<int> legendre;
+    legendre.push_back(0);
+    for (int i = 1; i < N; ++i) {
+        if (std::find(residue.begin(), residue.end(), i) != residue.end())
+            legendre.push_back(1);
+        else
+            legendre.push_back(0);
+    }
+    return legendre;
+}
+
+std::vector<int> Constellation::generateWeilCode(int N, int w, std::vector<int> legendre) {
+    std::vector<int> weil_code(N);
+    std::transform(legendre.begin(), legendre.end(), weil_code.begin(),
+        [&legendre, N, w, i = 0](int value) mutable { return (value + legendre[(i++ + w) % N]) % 2; });
+    return weil_code;
+}
+
+void Constellation::generateTruncatedWeil(int prn, int weilN, int codeLength, int phaseDiff, int truncPoint, std::vector<int> legendreSequence) {
+    std::vector<int> weil_code;
+    weil_code = generateWeilCode(weilN, phaseDiff, legendreSequence);
+
+    prn_code.clear();
+    if ((codeLength + truncPoint - 2) < weilN)
+        prn_code = std::vector<int>(weil_code.begin() + truncPoint - 1, weil_code.begin() + truncPoint - 1 + codeLength);
+    else {
+        prn_code = std::vector<int>(weil_code.begin() + truncPoint - 1, weil_code.end());
+        std::copy(weil_code.begin(), weil_code.begin() + (truncPoint - 1 + codeLength) % weilN, std::back_inserter(prn_code));
+    }
+    return;
+}
+
+bool Constellation::checkValidPRN(int prn) {
+    int numOfSats = getNumberOfSats();
+    if (prn <= 0 || prn > numOfSats) {
+        std::cout << "PRN " << prn << " not is out of bounds!\n";
+        prn_code.clear();
+        return false;
+    }
+    return true;
+}

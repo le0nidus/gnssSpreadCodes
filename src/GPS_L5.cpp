@@ -38,3 +38,17 @@ std::vector<int> GPS_L5::generateL5Code(int offset) {
 	}
 	return code;
 }
+
+void GPS_L5::generateL5I(int prn) {
+	if (!checkValidPRN(prn))
+		return; //BAD PRN so we don't create it
+	prn_code.clear();
+	prn_code = generateL5Code(l5i_init[prn]);
+};
+
+void GPS_L5::generateL5Q(int prn) {
+	if (!checkValidPRN(prn))
+		return; //BAD PRN so we don't create it
+	prn_code.clear();
+	prn_code = generateL5Code(l5q_init[prn]);
+};

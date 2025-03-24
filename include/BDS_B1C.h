@@ -1,8 +1,3 @@
-#include <vector>
-#include <iterator>
-#include <algorithm>
-#include <set>
-#include <numeric>
 #include "Constellation.h"
 
 #define BEIDOU_B1C_WEIL_N 10243
@@ -33,10 +28,6 @@ private:
     int getSpreadCodeSize2() override { return BEIDOU_B1C_SECONDARY_CODE_LENGTH; }
     std::string getConstellationName() override { return "BeiDou B1C"; }
     int getNumberOfSats() override { return BEIDOU_B1C_NUMBER_OF_SATS; }    
-
-    std::vector<int> residueCalculator(int N);
-    std::vector<int> generateLegendreSequence(int N, std::vector<int> residue);
-    std::vector<int> generateWeilCode(int N, int w, std::vector<int> legendre);
 
     std::vector<int> residuePrimary;
     std::vector<int> residueSecondary;

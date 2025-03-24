@@ -14,7 +14,16 @@ int main() {
 	GLO_CDMA_L3 glo_l3oc;
 	GLO_CDMA_L2 glo_l2oc;
 	GLO_CDMA_L1 glo_l1oc;
+	LunaNet lunaNet;
 	int n = 30;
+
+	std::cout << "\nLunaNet AFS-I\n";
+	lunaNet.afs_i(n); //AFS-I
+	lunaNet.printOneCode();
+
+	std::cout << "\nLunaNet AFS-Q\n";
+	lunaNet.afs_q(n); //AFS-Q
+	lunaNet.printOneCode();
 
 	std::cout << "\nL1OCd\n";
 	glo_l1oc.l1ocd(n); //L1OCd
@@ -38,26 +47,22 @@ int main() {
 	
 	B1C_spreadCode.printConstellationHeader();
 	std::cout << "Secondary Pilot Code\n";
-	for (prn = 1; prn < BEIDOU_B1C_NUMBER_OF_SATS + 1; prn++) {
-		std::cout << "PRN: " << prn << std::endl;
-		B1C_spreadCode.generateSecondaryPilot(prn);
-		B1C_spreadCode.printOneCode();
-		std::cout << std::endl;
-	}
+	std::cout << "PRN: " << n << std::endl;
+	B1C_spreadCode.generateSecondaryPilot(n);
+	B1C_spreadCode.printOneCode();
+	std::cout << std::endl;
+	
 	std::cout << "Primary Pilot Code\n";
-	for (prn = 1; prn < BEIDOU_B1C_NUMBER_OF_SATS + 1; prn++) {
-		std::cout << "PRN: " << prn << std::endl;
-		B1C_spreadCode.generatePrimaryPilot(prn);
-		B1C_spreadCode.printOneCode();
-		std::cout << std::endl;
-	}
+	std::cout << "PRN: " << n << std::endl;
+	B1C_spreadCode.generatePrimaryPilot(n);
+	B1C_spreadCode.printOneCode();
+	std::cout << std::endl;
+	
 	std::cout << "Primary Data Code\n";
-	for (prn = 1; prn < BEIDOU_B1C_NUMBER_OF_SATS + 1; prn++) {
-		std::cout << "PRN: " << prn << std::endl;
-		B1C_spreadCode.generatePrimaryData(prn);
-		B1C_spreadCode.printOneCode();
-		std::cout << std::endl;
-	}
+	std::cout << "PRN: " << prn << std::endl;
+	B1C_spreadCode.generatePrimaryData(n);
+	B1C_spreadCode.printOneCode();
+	std::cout << std::endl;
     
 	std::cout << std::endl;
 	gpsl5.printConstellationHeader();
