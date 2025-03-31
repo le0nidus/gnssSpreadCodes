@@ -4,7 +4,8 @@
 #include "include/BDS_B1C.h"
 #include "include/GPS_L5.h"
 #include "include/GLO_CDMA_L1OC.h"
-#include "include/GLO_CDMA_L2L3OC.h"
+#include "include/GLO_CDMA_L2OC.h"
+#include "include/GLO_CDMA_L3OC.h"
 #include "include/LUNANET.h"
 
 

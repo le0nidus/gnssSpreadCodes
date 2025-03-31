@@ -4,11 +4,10 @@
 #include <iterator>
 #include "Constellation.h"
 
-#define GPS_L5_CODE_LENGTH 10230
-#define GPS_L5_REGISTER_SIZE 13
-#define GPS_L5_XB_SIZE 8191
-
-#define GPS_L5_NUMBER_OF_SATS 63		      //Total number of satellites
+constexpr int GPS_L5_CODE_LENGTH = 10230;
+constexpr int GPS_L5_REGISTER_SIZE = 13;
+constexpr int GPS_L5_XB_SIZE = 8191;
+constexpr int GPS_L5_NUMBER_OF_SATS = 63;		      //Total number of satellites
 
 
 class GPS_L5 : public Constellation {

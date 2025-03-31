@@ -1,12 +1,12 @@
 #include "Constellation.h"
 
-#define BEIDOU_B1C_WEIL_N 10243
-#define BEIDOU_B1C_WEIL_N_SECONDARY 3607
+constexpr int BEIDOU_B1C_WEIL_N = 10243;
+constexpr int BEIDOU_B1C_WEIL_N_SECONDARY = 3607;
 
-#define BEIDOU_B1C_PRIMARY_CODE_LENGTH 10230  // Each primary code of Pilot/Data components has the length 10230 chips.
-#define BEIDOU_B1C_SECONDARY_CODE_LENGTH 1800  // Each secondary code of Pilot component has the length 1800 chips.
+constexpr int BEIDOU_B1C_PRIMARY_CODE_LENGTH = 10230;  // Each primary code of Pilot/Data components has the length 10230 chips.
+constexpr int BEIDOU_B1C_SECONDARY_CODE_LENGTH = 1800;  // Each secondary code of Pilot component has the length 1800 chips.
 
-#define BEIDOU_B1C_NUMBER_OF_SATS 63		      //Total number of satellites
+constexpr int BEIDOU_B1C_NUMBER_OF_SATS = 63;		      //Total number of satellites
 
 class BDS_B1C : public Constellation{
 public:
