@@ -1,4 +1,3 @@
-#include <vector>
 #include <fstream>
 #include <iostream>
 #include "include/BDS_B1C.h"
