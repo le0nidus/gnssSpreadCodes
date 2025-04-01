@@ -1,25 +1,20 @@
 #ifndef GLO_CDMA_HEADER
 #define GLO_CDMA_HEADER
 
-#include <algorithm>
-#include <vector>
-#include <iterator>
 #include "Constellation.h"
 
-#define GLO_CDMA_NUMBER_OF_SATS 63
-
+constexpr int GLO_CDMA_NUMBER_OF_SATS = 63;
+constexpr int GLO_CDMA_L2L3_LENGTH = 10230;
+constexpr int GLO_CDMA_L2L3_TAPS_G1G3 = 96; // G1/G3 register has 14 stages; XOR feedback is applied to registers 13, 12, 7, 3
+constexpr int GLO_CDMA_L2L3_TAPS_G2 = 12424; // G2 register has 6 stages; XOR feedback is applied to registers 0, 5
 
 class GLO_CDMA : public Constellation {
 public:
     GLO_CDMA() {}
 
 protected:
-    std::vector<int> dec2bin(int n, int numOfBits);
-    void lfsr(std::vector<int> &reg, int taps);
-    void generatePRN(int prn, std::vector<int> g1, std::vector<int> g2, int codeLen, int tapsG1, int tapsG2);
-
-private:
     
+private:
     int getNumberOfSats() override { return GLO_CDMA_NUMBER_OF_SATS; }
     
 };

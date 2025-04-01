@@ -1,22 +1,16 @@
-#include <vector>
-#include <iterator>
-#include <algorithm>
-#include <set>
-#include <numeric>
 #include "Constellation.h"
 
-#define BEIDOU_B1C_WEIL_N 10243
-#define BEIDOU_B1C_WEIL_N_SECONDARY 3607
+constexpr int BEIDOU_B1C_WEIL_N = 10243;
+constexpr int BEIDOU_B1C_WEIL_N_SECONDARY = 3607;
 
-#define BEIDOU_B1C_PRIMARY_CODE_LENGTH 10230  // Each primary code of Pilot/Data components has the length 10230 chips.
-#define BEIDOU_B1C_SECONDARY_CODE_LENGTH 1800  // Each secondary code of Pilot component has the length 1800 chips.
+constexpr int BEIDOU_B1C_PRIMARY_CODE_LENGTH = 10230;  // Each primary code of Pilot/Data components has the length 10230 chips.
+constexpr int BEIDOU_B1C_SECONDARY_CODE_LENGTH = 1800;  // Each secondary code of Pilot component has the length 1800 chips.
 
-#define BEIDOU_B1C_NUMBER_OF_SATS 63		      //Total number of satellites
+constexpr int BEIDOU_B1C_NUMBER_OF_SATS = 63;		      //Total number of satellites
 
 class BDS_B1C : public Constellation{
 public:
     BDS_B1C() {     // Constructor
-        oneSizeConstellation = false;
         residuePrimary = residueCalculator(BEIDOU_B1C_WEIL_N);
         legendrePrimary = generateLegendreSequence(BEIDOU_B1C_WEIL_N, residuePrimary);
         residueSecondary = residueCalculator(BEIDOU_B1C_WEIL_N_SECONDARY);
@@ -29,14 +23,8 @@ public:
 
 private:
 
-    int getSpreadCodeSize() override { return BEIDOU_B1C_PRIMARY_CODE_LENGTH; }
-    int getSpreadCodeSize2() override { return BEIDOU_B1C_SECONDARY_CODE_LENGTH; }
     std::string getConstellationName() override { return "BeiDou B1C"; }
     int getNumberOfSats() override { return BEIDOU_B1C_NUMBER_OF_SATS; }    
-
-    std::vector<int> residueCalculator(int N);
-    std::vector<int> generateLegendreSequence(int N, std::vector<int> residue);
-    std::vector<int> generateWeilCode(int N, int w, std::vector<int> legendre);
 
     std::vector<int> residuePrimary;
     std::vector<int> residueSecondary;
