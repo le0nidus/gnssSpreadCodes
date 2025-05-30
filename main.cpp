@@ -1,6 +1,7 @@
 #include <fstream>
 #include <iostream>
 #include "include/BDS_B1C.h"
+#include "include/BDS_B2a.h"
 #include "include/GPS_L5.h"
 #include "include/GLO_CDMA_L1OC.h"
 #include "include/GLO_CDMA_L2OC.h"
@@ -11,6 +12,7 @@
 int main() {
 	int prn;
 	BDS_B1C B1C_spreadCode;
+	BDS_B2a B2a_spreadCode;
 	GPS_L5 gpsl5;
 	GLO_CDMA_L3 glo_l3oc;
 	GLO_CDMA_L2 glo_l2oc;
@@ -86,6 +88,18 @@ int main() {
 		gpsl5.printOneCode();
 		std::cout << std::endl;
 	}
+
+	std::cout << "\nBeidou B2a Primary Data\n";
+	B2a_spreadCode.generatePrimaryData(n); //AFS-Q Trietary
+	B2a_spreadCode.printOneCode();
+
+	std::cout << "\nBeidou B2a Primary Pilot\n";
+	B2a_spreadCode.generatePrimaryPilot(n); //AFS-I
+	B2a_spreadCode.printOneCode();
+
+	std::cout << "\nBeidou B2a Secondary Pilot\n";
+	B2a_spreadCode.generateSecondaryPilot(n); //AFS-Q Primary
+	B2a_spreadCode.printOneCode();
 
     return 0;
 }
