@@ -99,14 +99,27 @@ void Constellation::lfsr(std::vector<int> &reg, int taps) {
  * - It iterates `codeLen` times, computing each "new" PRN bit as `g1.back() ^ g2.back()`.
  * - The `lfsr` function is called to shift both `g1` and `g2` forward using their respective tap configurations.
  */
-void Constellation::generatePRN(int prn, std::vector<int> g1, std::vector<int> g2, int codeLen, int tapsG1, int tapsG2) {
+void Constellation::generatePRN(int prn, std::vector<int> g1, std::vector<int> g2, int codeLen, int tapsG1, int tapsG2, int resetPosition) {
     prn_code.clear();  // Clear any previously stored PRN sequence
-  
-    for (int i = 0; i < codeLen; i++) {
-        prn_code.push_back(g1.back() ^ g2.back()); // XOR last elements of g1 and g2
-        lfsr(g1, tapsG1); // Update g1 using LFSR
-        lfsr(g2, tapsG2); // Update g2 using LFSR
+    
+    if (resetPosition == 0) {
+        for (int i = 0; i < codeLen; i++) {
+            prn_code.push_back(g1.back() ^ g2.back()); // XOR last elements of g1 and g2
+            lfsr(g1, tapsG1); // Update g1 using LFSR
+            lfsr(g2, tapsG2); // Update g2 using LFSR
+        }
     }
+    else {
+        std::vector<int> initializationVec = g1;
+        for (int i = 0; i < codeLen; i++) {
+            prn_code.push_back(g1.back() ^ g2.back()); // XOR last elements of g1 and g2
+            lfsr(g1, tapsG1); // Update g1 using LFSR
+            lfsr(g2, tapsG2); // Update g2 using LFSR
+            if (i == resetPosition)
+                g1 = initializationVec;
+        }
+    }
+    
 }
 
 
