@@ -104,12 +104,20 @@ int main() {
 	GalE5b.generatePrimaryE5bQ(n);
 	GalE5b.printOneCode();
 
+	std::cout << "\nGalileo E5b_Q Secondary Code\n";
+	GalE5b.generateSecondaryE5bQ(n);
+	GalE5b.printOneCode();
+
 	std::cout << "\nGalileo E5a_I Primary Code\n";
 	GalE5a.generatePrimaryE5aI(n);
 	GalE5a.printOneCode();
 
 	std::cout << "\nGalileo E5a_Q Primary Code\n";
 	GalE5a.generatePrimaryE5aQ(n);
+	GalE5a.printOneCode();
+
+	std::cout << "\nGalileo E5a_Q Secondary Code\n";
+	GalE5a.generateSecondaryE5aQ(n);
 	GalE5a.printOneCode();
 
     return 0;

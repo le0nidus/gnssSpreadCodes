@@ -12,11 +12,11 @@ constexpr int GALILEO_E5_NUMBER_OF_CODES = 50;		      //Number of codes in the I
 
 class GAL_E5 : public Constellation{
 public:
-    GAL_E5() {     // Constructor
-    }
+    GAL_E5() {}
 
 protected:
     void generatePrimary(int prn, int g2Init, int tapsG1, int tapsG2);
+    void generateSecondaryQ(std::string hexCode);
 
 private:
 
