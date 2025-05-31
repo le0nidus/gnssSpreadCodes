@@ -3,6 +3,7 @@ I'll try to implement here as much as I can in my free time :)
 
 Implemented:
 - 🛰️ BeiDou B1C (B1CPp,B1CPs,B1CDp), B2a (B2aDataPrimary, B2aPilotPrimary, B2aPilotSecondary)
+- 🛰️ Galileo E5 (E5aI, E5aQ, E5bI, E5bQ)
 - 🛰️ GPS L5 (L5I,L5Q)
 - 🛰️ Glonass CDMA (L1OCp, L1OCd, L2OCp, L3OCp, L3OCd)
 - 🛰️ Luna Net (AFS-I, AFS-Q Primary, AFS-Q Trietary)
