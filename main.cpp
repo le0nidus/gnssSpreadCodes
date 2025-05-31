@@ -2,6 +2,8 @@
 #include <iostream>
 #include "include/BDS_B1C.h"
 #include "include/BDS_B2a.h"
+#include "include/GAL_E5b.h"
+#include "include/GAL_E5a.h"
 #include "include/GPS_L5.h"
 #include "include/GLO_CDMA_L1OC.h"
 #include "include/GLO_CDMA_L2OC.h"
@@ -13,6 +15,8 @@ int main() {
 	int prn;
 	BDS_B1C B1C_spreadCode;
 	BDS_B2a B2a_spreadCode;
+	GAL_E5b GalE5b;
+	GAL_E5a GalE5a;
 	GPS_L5 gpsl5;
 	GLO_CDMA_L3 glo_l3oc;
 	GLO_CDMA_L2 glo_l2oc;
@@ -71,23 +75,13 @@ int main() {
 	B1C_spreadCode.printOneCode();
 	std::cout << std::endl;
     
-	std::cout << std::endl;
-	gpsl5.printConstellationHeader();
-	std::cout << "L5Q CODE\n";
-	for (prn = 1; prn < 64; prn++) {
-		gpsl5.generateL5Q(prn);
-		std::cout << "PRN: " << prn << std::endl;
-		gpsl5.printOneCode(",");
-		std::cout << std::endl;
-	}
+	std::cout << "GPS L5Q Code\n";
+	gpsl5.generateL5Q(prn);
+	gpsl5.printOneCode("");
 
-	std::cout << "L5I CODE\n";
-	for (prn = 1; prn < 64; prn++) {
-		gpsl5.generateL5I(prn);
-		std::cout << "PRN: " << prn << std::endl;
-		gpsl5.printOneCode();
-		std::cout << std::endl;
-	}
+	std::cout << "GPS L5I Code\n";
+	gpsl5.generateL5I(n);
+	gpsl5.printOneCode();
 
 	std::cout << "\nBeidou B2a Primary Data\n";
 	B2a_spreadCode.generatePrimaryData(n); //AFS-Q Trietary
@@ -100,6 +94,31 @@ int main() {
 	std::cout << "\nBeidou B2a Secondary Pilot\n";
 	B2a_spreadCode.generateSecondaryPilot(n); //AFS-Q Primary
 	B2a_spreadCode.printOneCode();
+
+
+	std::cout << "\nGalileo E5b_I Primary Code\n";
+	GalE5b.generatePrimaryE5bI(n);
+	GalE5b.printOneCode();
+
+	std::cout << "\nGalileo E5b_Q Primary Code\n";
+	GalE5b.generatePrimaryE5bQ(n);
+	GalE5b.printOneCode();
+
+	std::cout << "\nGalileo E5b_Q Secondary Code\n";
+	GalE5b.generateSecondaryE5bQ(n);
+	GalE5b.printOneCode();
+
+	std::cout << "\nGalileo E5a_I Primary Code\n";
+	GalE5a.generatePrimaryE5aI(n);
+	GalE5a.printOneCode();
+
+	std::cout << "\nGalileo E5a_Q Primary Code\n";
+	GalE5a.generatePrimaryE5aQ(n);
+	GalE5a.printOneCode();
+
+	std::cout << "\nGalileo E5a_Q Secondary Code\n";
+	GalE5a.generateSecondaryE5aQ(n);
+	GalE5a.printOneCode();
 
     return 0;
 }
