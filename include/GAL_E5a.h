@@ -27,11 +27,21 @@ public:
         generateSecondaryQ(secondaryE5aQ[prn - 1]);
         return;
     }
+
+    void generateSecondaryE5aI(int prn) {
+        if (!checkValidPRN(prn))
+            return; //BAD PRN so we don't create it
+        prn_code.clear();
+        prn_code = E5aI_secondary;
+        return;
+    }
     
 
 private:
 
     std::string getConstellationName() override { return "Galileo E5a"; }
+
+    const std::vector<int> E5aI_secondary = { 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0 }; // 0x842E9 = 0b10000100001011101001
 
     const int E5AI_g2_init[GALILEO_E5_NUMBER_OF_CODES] = {
         030305, 014234, 027213, 020577, 023312, 033463, 015614, 012537,
