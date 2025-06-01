@@ -27,7 +27,7 @@ protected:
     
     void lfsr(std::vector<int> &reg, int taps);
     std::vector<int> dec2bin(int n, int numOfBits, bool msb_is_last = false);
-    void generatePRN(int prn, std::vector<int> g1, std::vector<int> g2, int codeLen, int tapsG1, int tapsG2, int resetPosition = 0);
+    void generatePRN(std::vector<int> g1, std::vector<int> g2, int codeLen, int tapsG1, int tapsG2, int resetPosition = 0);
 
     std::vector<int> residueCalculator(int N);
     std::vector<int> generateLegendreSequence(int N, std::vector<int> residue);

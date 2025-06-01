@@ -32,7 +32,7 @@ private:
     std::vector<int> residue;
     std::vector<int> legendre;
 
-    void generatePrimary(int prn, int g2Init, int tapsG1, int tapsG2);
+    void generatePrimary(int g2Init, int tapsG1, int tapsG2);
 
     const std::unordered_map<int, int> g2_data_init = {
         { 1, 0x1025 }, { 2, 0x1034 }, { 3, 0x10AD }, { 4, 0x114F },
