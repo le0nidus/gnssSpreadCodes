@@ -4,6 +4,7 @@
 #include "include/BDS_B2a.h"
 #include "include/GAL_E5b.h"
 #include "include/GAL_E5a.h"
+#include "include/GPS_L1C.h"
 #include "include/GPS_L5.h"
 #include "include/GLO_CDMA_L1OC.h"
 #include "include/GLO_CDMA_L2OC.h"
@@ -17,6 +18,7 @@ int main() {
 	BDS_B2a B2a_spreadCode;
 	GAL_E5b GalE5b;
 	GAL_E5a GalE5a;
+	GPS_L1C gpsl1c;
 	GPS_L5 gpsl5;
 	GLO_CDMA_L3 glo_l3oc;
 	GLO_CDMA_L2 glo_l2oc;
@@ -119,6 +121,14 @@ int main() {
 	std::cout << "\nGalileo E5a_Q Secondary Code\n";
 	GalE5a.generateSecondaryE5aQ(n);
 	GalE5a.printOneCode();
+
+	std::cout << "\nGPS L1C Pilot Code\n";
+	gpsl1c.generateL1CP(n);
+	gpsl1c.printOneCode();
+
+	std::cout << "\nGPS L1C Data Code\n";
+	gpsl1c.generateL1CD(n);
+	gpsl1c.printOneCode();
 
     return 0;
 }
