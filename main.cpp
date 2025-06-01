@@ -130,6 +130,10 @@ int main() {
 	gpsl1c.generateL1CD(n);
 	gpsl1c.printOneCode();
 
+	std::cout << "\nGPS L1C Overlay Code\n";
+	gpsl1c.generateL1CO(30);
+	gpsl1c.printOneCode();
+
     return 0;
 }
 
