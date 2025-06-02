@@ -10,7 +10,7 @@ void LunaNet::afs_i(int prn) {
 	bool msb_is_last_idx = true;
 	g2 = dec2bin(g2Init, LUNANET_AFSI_NUM_REGISTERS_IN_G2, msb_is_last_idx);
 
-	generatePRN(prn, g1, g2, LUNANET_AFSI_CODE_LENGTH, LUNANET_AFSI_TAPS_G1, LUNANET_AFSI_TAPS_G2);
+	generatePRN(g1, g2, LUNANET_AFSI_CODE_LENGTH, LUNANET_AFSI_TAPS_G1, LUNANET_AFSI_TAPS_G2);
 	return;
 }
 

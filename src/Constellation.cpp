@@ -99,7 +99,7 @@ void Constellation::lfsr(std::vector<int> &reg, int taps) {
  * - It iterates `codeLen` times, computing each "new" PRN bit as `g1.back() ^ g2.back()`.
  * - The `lfsr` function is called to shift both `g1` and `g2` forward using their respective tap configurations.
  */
-void Constellation::generatePRN(int prn, std::vector<int> g1, std::vector<int> g2, int codeLen, int tapsG1, int tapsG2, int resetPosition) {
+void Constellation::generatePRN(std::vector<int> g1, std::vector<int> g2, int codeLen, int tapsG1, int tapsG2, int resetPosition) {
     prn_code.clear();  // Clear any previously stored PRN sequence
     
     if (resetPosition == 0) {
