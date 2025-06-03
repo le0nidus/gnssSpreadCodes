@@ -2,6 +2,7 @@
 #include <iostream>
 #include "include/BDS_B1C.h"
 #include "include/BDS_B2a.h"
+#include "include/BDS_B2b.h"
 #include "include/GAL_E5b.h"
 #include "include/GAL_E5a.h"
 #include "include/GPS_L1C.h"
@@ -16,6 +17,7 @@ int main() {
 	int prn;
 	BDS_B1C B1C_spreadCode;
 	BDS_B2a B2a_spreadCode;
+	BDS_B2b B2b_spreadCode;
 	GAL_E5b GalE5b;
 	GAL_E5a GalE5a;
 	GPS_L1C gpsl1c;
@@ -133,6 +135,10 @@ int main() {
 	std::cout << "\nGPS L1C Overlay Code\n";
 	gpsl1c.generateL1CO(30);
 	gpsl1c.printOneCode();
+
+	std::cout << "\nBeidou B2b Code\n";
+	B2b_spreadCode.generateCode(30);
+	B2b_spreadCode.printOneCode();
 
     return 0;
 }
