@@ -34,7 +34,7 @@ void Constellation::printOneCode(std::string sep) {
    Returns:
    - A vector of `numOfBits` integers (0s and 1s) representing the binary equivalent of `n`.
 */
-std::vector<int> Constellation::dec2bin(int n, int numOfBits, bool msb_is_last) {
+std::vector<int> Constellation::dec2bin(ULL n, int numOfBits, bool msb_is_last) {
 	std::vector<int> s;
 	if (msb_is_last) {
 		for (int i = 0; i < numOfBits; i++)
