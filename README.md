@@ -6,6 +6,7 @@ Implemented:
 - 🛰️ Galileo E5 (E5aI, E5aQ, E5bI, E5bQ)
 - 🛰️ GPS L1C (L1CD, L1CP, L1CO), L5 (L5I,L5Q)
 - 🛰️ Glonass CDMA (L1OCp, L1OCd, L2OCp, L3OCp, L3OCd)
+- 🛰️ IRNSS/ Navic (L1Data, L1Pilot, L1Overlay)
 - 🛰️ Luna Net (AFS-I, AFS-Q Primary, AFS-Q Trietary)
 
 TODO:
