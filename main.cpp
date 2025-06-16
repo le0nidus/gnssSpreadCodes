@@ -10,6 +10,7 @@
 #include "include/GLO_CDMA_L1OC.h"
 #include "include/GLO_CDMA_L2OC.h"
 #include "include/GLO_CDMA_L3OC.h"
+#include "include/NAVIC_L1.h"
 #include "include/LUNANET.h"
 
 
@@ -25,8 +26,21 @@ int main() {
 	GLO_CDMA_L3 glo_l3oc;
 	GLO_CDMA_L2 glo_l2oc;
 	GLO_CDMA_L1 glo_l1oc;
+	NAVIC_L1 navic_l1;
 	LunaNet lunaNet;
-	int n = 30;
+	int n = 13;
+
+	std::cout << "\nNavic L1 Primary Data\n";
+	navic_l1.generateDataPrimary(n);
+	navic_l1.printOneCode();
+
+	std::cout << "\nNavic L1 Primary Pilot\n";
+	navic_l1.generatePilotPrimary(n);
+	navic_l1.printOneCode();
+
+	std::cout << "\nNavic L1 Overlay Pilot\n";
+	navic_l1.generatePilotOverlay(n);
+	navic_l1.printOneCode();
 
 	std::cout << "\nLunaNet AFS-Q Trietary\n";
 	lunaNet.afs_q_trietary(n); //AFS-Q Trietary

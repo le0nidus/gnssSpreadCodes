@@ -10,6 +10,8 @@
 #include <fstream>
 #include <iostream>
 
+using ULL = unsigned long long;
+
 class Constellation {
 public:
     virtual void printOneCode();
@@ -26,7 +28,7 @@ protected:
     bool checkValidPRN(int prn);
     
     void lfsr(std::vector<int> &reg, int taps);
-    std::vector<int> dec2bin(int n, int numOfBits, bool msb_is_last = false);
+    std::vector<int> dec2bin(ULL n, int numOfBits, bool msb_is_last = false);
     void generatePRN(std::vector<int> g1, std::vector<int> g2, int codeLen, int tapsG1, int tapsG2, int resetPosition = 0);
 
     std::vector<int> residueCalculator(int N);
