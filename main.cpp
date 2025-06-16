@@ -11,6 +11,7 @@
 #include "include/GLO_CDMA_L2OC.h"
 #include "include/GLO_CDMA_L3OC.h"
 #include "include/NAVIC_L1.h"
+#include "include/NAVIC_L5S.h"
 #include "include/LUNANET.h"
 
 
@@ -27,8 +28,18 @@ int main() {
 	GLO_CDMA_L2 glo_l2oc;
 	GLO_CDMA_L1 glo_l1oc;
 	NAVIC_L1 navic_l1;
+	NAVIC_S navic_s;
+	NAVIC_L5 navic_l5;
 	LunaNet lunaNet;
 	int n = 13;
+
+	std::cout << "\nNavic S\n";
+	navic_s.generate(n);
+	navic_s.printOneCode();
+
+	std::cout << "\nNavic L5\n";
+	navic_l5.generate(n);
+	navic_l5.printOneCode();
 
 	std::cout << "\nNavic L1 Primary Data\n";
 	navic_l1.generateDataPrimary(n);
