@@ -24,7 +24,7 @@ public:
     void generateSecondaryE5aQ(int prn) {
         if (!checkValidPRN(prn))
             return; //BAD PRN so we don't create it
-        generateSecondaryQ(secondaryE5aQ[prn - 1]);
+        generateCodeFromString(secondaryE5aQ[prn - 1]);
         return;
     }
 

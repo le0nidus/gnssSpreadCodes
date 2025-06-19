@@ -3,6 +3,7 @@
 #include "include/BDS_B1C.h"
 #include "include/BDS_B2a.h"
 #include "include/BDS_B2b.h"
+#include "include/GAL_E1.h"
 #include "include/GAL_E5b.h"
 #include "include/GAL_E5a.h"
 #include "include/GPS_CA.h"
@@ -21,6 +22,7 @@ int main() {
 	BDS_B1C B1C_spreadCode;
 	BDS_B2a B2a_spreadCode;
 	BDS_B2b B2b_spreadCode;
+	GAL_E1 GalE1;
 	GAL_E5b GalE5b;
 	GAL_E5a GalE5a;
 	GPS_CA gps_ca;
@@ -34,6 +36,18 @@ int main() {
 	NAVIC_L5 navic_l5;
 	LunaNet lunaNet;
 	int n = 13;
+
+	std::cout << "\nGAL E1B\n";
+	GalE1.generateE1B(n);
+	GalE1.printOneCode();
+
+	std::cout << "\nGAL E1C\n";
+	GalE1.generateE1C(n);
+	GalE1.printOneCode();
+
+	std::cout << "\nGPS CA\n";
+	gps_ca.generate(n);
+	gps_ca.printOneCode();
 
 	std::cout << "\nGPS CA\n";
 	gps_ca.generate(n);
