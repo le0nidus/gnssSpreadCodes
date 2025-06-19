@@ -16,7 +16,6 @@ public:
 
 protected:
     void generatePrimary(int prn, int g2Init, int tapsG1, int tapsG2);
-    void generateSecondaryQ(std::string hexCode);
 
 private:
 
