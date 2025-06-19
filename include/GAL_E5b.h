@@ -3,10 +3,6 @@
 constexpr int GALILEO_E5b_PRIMARY_TAPS_G1 = 064021 >> 1;
 constexpr int GALILEO_E5bI_PRIMARY_TAPS_G2 = 051445 >> 1;
 constexpr int GALILEO_E5bQ_PRIMARY_TAPS_G2 = 043143 >> 1;
-
-
-constexpr int GALILEO_E5b_NUMBER_OF_SATS = 36;		      //Total number of satellites
-
 class GAL_E5b : public GAL_E5{
 public:
     GAL_E5b() {}
