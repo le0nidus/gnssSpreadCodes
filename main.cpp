@@ -5,6 +5,7 @@
 #include "include/BDS_B2b.h"
 #include "include/GAL_E5b.h"
 #include "include/GAL_E5a.h"
+#include "include/GPS_CA.h"
 #include "include/GPS_L1C.h"
 #include "include/GPS_L5.h"
 #include "include/GLO_CDMA_L1OC.h"
@@ -22,6 +23,7 @@ int main() {
 	BDS_B2b B2b_spreadCode;
 	GAL_E5b GalE5b;
 	GAL_E5a GalE5a;
+	GPS_CA gps_ca;
 	GPS_L1C gpsl1c;
 	GPS_L5 gpsl5;
 	GLO_CDMA_L3 glo_l3oc;
@@ -32,6 +34,10 @@ int main() {
 	NAVIC_L5 navic_l5;
 	LunaNet lunaNet;
 	int n = 13;
+
+	std::cout << "\nGPS CA\n";
+	gps_ca.generate(n);
+	gps_ca.printOneCode();
 
 	std::cout << "\nNavic S\n";
 	navic_s.generate(n);
