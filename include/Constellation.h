@@ -35,7 +35,7 @@ protected:
     std::vector<int> generateLegendreSequence(int N, std::vector<int> residue);
     std::vector<int> generateWeilCode(int N, int w, std::vector<int> legendre);
     void generateTruncatedWeil(int prn, int weilN, int codeLength, int phaseDiff, int truncPoint, std::vector<int> legendreSequence);
-    void generateCodeFromString(const std::string &hexCode);
+    void generateCodeFromString(const std::string &hexCode, int numOfBits = 0);
     
 };
 

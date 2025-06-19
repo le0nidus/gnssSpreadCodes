@@ -185,9 +185,11 @@ bool Constellation::checkValidPRN(int prn) {
     return true;
 }
 
-void Constellation::generateCodeFromString(const std::string &hexCode) {
+void Constellation::generateCodeFromString(const std::string &hexCode, int numOfBits) {
     prn_code.clear();  // Clear any previously stored PRN sequence
+    int i = 0;
     for (char c : hexCode) {
+
         // Convert hex character to its 4-bit integer value
         uint8_t value = 0;
         if (c >= '0' && c <= '9')
@@ -202,6 +204,9 @@ void Constellation::generateCodeFromString(const std::string &hexCode) {
         // Extract 4 bits from most significant to least significant
         for (int bit = 3; bit >= 0; --bit) {
             prn_code.push_back((value >> bit) & 1);
+            i++;
+            if (i == numOfBits)
+                return;
         }
     }
     return;

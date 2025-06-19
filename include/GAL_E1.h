@@ -15,11 +15,8 @@ public:
 
 protected:
     
-    //void generateSecondaryQ(std::string hexCode);
-
 private:
 
-    void generatePrimary(const std::string &hexStr);
     std::string getConstellationName() override { return "Galileo E1"; }
     int getNumberOfSats() override { return GALILEO_E1_NUMBER_OF_SATS; }
    

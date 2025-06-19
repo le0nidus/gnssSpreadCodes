@@ -6,6 +6,7 @@
 #include "include/GAL_E1.h"
 #include "include/GAL_E5b.h"
 #include "include/GAL_E5a.h"
+#include "include/GAL_E6.h"
 #include "include/GPS_CA.h"
 #include "include/GPS_L1C.h"
 #include "include/GPS_L5.h"
@@ -25,6 +26,7 @@ int main() {
 	GAL_E1 GalE1;
 	GAL_E5b GalE5b;
 	GAL_E5a GalE5a;
+	GAL_E6 GalE6;
 	GPS_CA gps_ca;
 	GPS_L1C gpsl1c;
 	GPS_L5 gpsl5;
@@ -44,6 +46,18 @@ int main() {
 	std::cout << "\nGAL E1C\n";
 	GalE1.generateE1C(n);
 	GalE1.printOneCode();
+
+	std::cout << "\nGAL E6B\n";
+	GalE6.generateE6B(n);
+	GalE6.printOneCode();
+
+	std::cout << "\nGAL E6C Primary\n";
+	GalE6.generatePrimaryE6C(n);
+	GalE6.printOneCode();
+
+	std::cout << "\nGAL E6C Secondary\n";
+	GalE6.generateSecondaryE6C(n);
+	GalE6.printOneCode();
 
 	std::cout << "\nGPS CA\n";
 	gps_ca.generate(n);
